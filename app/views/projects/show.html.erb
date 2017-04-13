@@ -1,14 +1,41 @@
 <p id="notice"><%= notice %></p>
+<!--VERSION 1-->
+<!--<div class="col-sm-12 text-left">-->
+  <!--<h2><%= @project.title %></h2>-->
+  <!--<strong>Description:</strong>-->
+  <!--<p><%= @project.description %></p>-->
+  <!--<hr>-->
+  <!--<%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary"%>-->
+  <!--<%= link_to 'Back', projects_path, class:"btn btn-primary" %>-->
+<!--</div>-->
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+<!--VERSION 2-->
+<!--http://bootsnipp.com/snippets/featured/panel-with-tabs-->
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @project.title %></h3>
+      <span class="pull-right">
+                        <!-- Tabs -->
+                        <ul class="nav panel-tabs">
+                            <li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
+                            <li><a href="#tab2" data-toggle="tab">Requirements</a></li>
+                            <li><a href="#tab3" data-toggle="tab">Date</a></li>
+                            <li><a href="#tab4" data-toggle="tab">Call back</a></li>
+                        </ul>
+                    </span>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+    <div class="panel-body">
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1"><%= @project.description %></div>
+        <div class="tab-pane" id="tab2">some requirments</div>
+        <div class="tab-pane" id="tab3"><%= @project.created_at %></div>
+        <div class="tab-pane" id="tab4">Company contacts</div>
+      </div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+    </div>
+  </div>
+  <%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary"%>
+  <%= link_to 'Back', projects_path, class:"btn btn-primary" %>
+</div>
