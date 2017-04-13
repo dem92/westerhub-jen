@@ -10,13 +10,13 @@
 
   <body>
 
+  <!--Render nav bar -->
+  <%= render partial: "shared/navbar" %>
+
   <!-- This is for Devise manual setup -->
   <!-- Ensure you have flash messages in app/views/layouts/application.html.erb. For example: -->
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
-  <!--Render nav bar -->
-  <%= render partial: "shared/navbar" %>
 
     <%= yield %>
   </body>
