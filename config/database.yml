@@ -24,9 +24,9 @@ default: &default
 development:
   <<: *default
   # username, password, host - settings for container
-  username: postgres
-  password:
-  host: db
+#  username: postgres
+#  password:
+#  host: db
   database: westerhub_development
 
 
