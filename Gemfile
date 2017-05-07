@@ -55,5 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Bootstrap gem
 gem 'bootstrap-sass', '~> 3.3.6'
 
-# Devise gem, is it fine to leave it here? (Joakim)
+# Devise gem
 gem 'devise', '~> 4.2', '>= 4.2.1'
