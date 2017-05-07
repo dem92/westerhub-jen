@@ -28,26 +28,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
 
-        <!-- Specific for logged in users -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your projects <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Saved projects</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">New project</a></li>
-            <li><a href="#">Manage your projects</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-Logged in user-</Logged> <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Settings</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Log out</a></li>
-          </ul>
-        </li>
-        <!-- End -->
+        <% if user_signed_in? %>
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
 
       </ul>
     </div><!-- /.navbar-collapse -->
