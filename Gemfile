@@ -57,3 +57,6 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 # Devise gem, is it fine to leave it here? (Joakim)
 gem 'devise', '~> 4.2', '>= 4.2.1'
+
+# Carrierwave gem - file uploading
+gem 'carrierwave', '~> 1.0'
