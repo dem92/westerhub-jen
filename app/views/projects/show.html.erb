@@ -11,6 +11,8 @@
 
 <!--VERSION 2-->
 <!--http://bootsnipp.com/snippets/featured/panel-with-tabs-->
+<%= image_tag @project.cover.url if @project.cover? %>
+
 <div class="col-md-6 col-md-offset-3">
   <div class="panel panel-primary">
     <div class="panel-heading">
