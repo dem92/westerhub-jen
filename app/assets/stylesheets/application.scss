@@ -16,13 +16,71 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$colorPrimary:  #88bbd6;
+$colorPrimary:  #337ab7;
 $colorPrimaryDark:  #99d3df;
 $fontColor: #ffffff;
 $whiteColor: #ffffff;
+$colorAscending: #fbce13;
+$textDark: #333333;
+
+body, html {
+  height: 92%;
+}
+
+body {
+  //background: image_url("AbstractBlue.jpg") no-repeat top fixed;
+  //-webkit-background-size: 100% 150%;
+  //background-size: 100% 150%;
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.landingpage-head {
+  height: inherit;
+  margin-top: -50px;
+  padding-top: 50px;
+  //background-color: $colorPrimary;
+  background: image_url("AbstractBlue.jpg") no-repeat top fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.westerbutton {
+  background-color: $colorAscending !important;
+}
+
+h1 span, p span, h3 span {
+  background-color: rgba(256,256,256,0.5);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.transparent {
+  background: transparent;
+}
+
+.borderedText {
+  color: $whiteColor;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+// Navigation bar styling START
+.navbar {
+  margin-bottom: 0px;
+  border: 0px;
+}
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0px;
+  }
+}
 
 .navbar-default{
-  background-color: $colorPrimary;
+  //background-color: $colorPrimary;
+  background: transparentize($textDark, 0.5);
 }
 .navbar-nav > li > a {
   color: $fontColor !important;
@@ -30,3 +88,4 @@ $whiteColor: #ffffff;
 .navbar-brand {
   color: $fontColor !important;
 }
+
