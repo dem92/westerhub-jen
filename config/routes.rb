@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+
   devise_for :users
   resources :projects
+  resources :users
 
   get 'landingpage/landingpage'
   root to: 'landingpage#landingpage'
