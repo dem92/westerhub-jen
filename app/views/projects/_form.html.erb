@@ -39,13 +39,20 @@
         <%= f.label :description %>
         <%= f.text_area :description,size:"2x10",:class=>'form-control' %>
 
-        <div id="btn-sbmt-new-proj">
-          <%= f.submit 'Update', :class => 'btn btn-primary' %>
-        </div>
+        <%= f.label :contact %>
+        <%= f.text_field :contact, class:"form-control"%>
 
         <div class="form-group">
           <%= f.label :cover %>
           <%= f.file_field :cover %>
+        </div>
+
+        <div id="btn-sbmt-new-proj" class="row-of-elements">
+          <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        </div>
+
+        <div class="row-of-elements">
+          <%= link_to 'Back', request.referer, :class => 'btn btn-primary' %>
         </div>
 
       </div>
