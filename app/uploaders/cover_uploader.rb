@@ -38,7 +38,7 @@ class CoverUploader < CarrierWave::Uploader::Base
   # For images you might use something like this:
   def extension_whitelist
     # %w(jpg jpeg gif png)
-    %w(jpg)
+    %w(jpg png)
   end
 
   def size_range
