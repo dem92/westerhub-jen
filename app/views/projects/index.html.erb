@@ -18,10 +18,10 @@
           <h2><%= project.title %></h2>
           <p><%= project.description %></p>
           <%= link_to 'Show', project, class:"btn btn-primary" %>
-          <%= link_to 'Edit', edit_project_path(project), class:"btn btn-primary" %>
-          <%= link_to 'Destroy', project, class:"btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
           <hr>
       <% end %>
+
+      <%= will_paginate @projects, renderer: BootstrapPagination::Rails %>
     </div>
     <!--VERSION 1 END-->
 
