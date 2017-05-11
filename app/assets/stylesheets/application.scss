@@ -78,10 +78,14 @@ h1 span, p span, h3 span {
   }
 }
 
-.navbar-default{
-  //background-color: $colorPrimary;
+.navbar-default {
+  background-color: $colorPrimary;
+}
+
+.navbar-landing {
   background: transparentize($textDark, 0.5);
 }
+
 .navbar-nav > li > a {
   color: $fontColor !important;
 }
