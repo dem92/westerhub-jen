@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+  get 'users/destroy'
+
   devise_for :users
   resources :projects
-
+  resources :users
   get 'landingpage/landingpage'
   root to: 'landingpage#landingpage'
 
