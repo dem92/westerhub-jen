@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'users/show'
+  #get 'users/show'
+  #get "/users/profile" => "users#profile", :as => 'profile'
 
   devise_for :users
   resources :projects

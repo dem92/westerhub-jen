@@ -1,9 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<hr>
+<h1>THIS IS THE PROFILE PAGE A USER</h1>
+
 <h3><%= @user.email %></h3> <br>
 
 <p>Whohooo!</p> <br>
 
 <p>Lets try showing the password</p> <br>
 <p> <%= @user.encrypted_password %></p>
+
+<br>
+<br>
+
+<%= link_to "Destroy me!", @user, class:"label label-danger", method: :delete, data: { confirm: 'Are you sure?' } %>

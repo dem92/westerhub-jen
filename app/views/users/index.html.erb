@@ -1,0 +1,51 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<hr>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+
+    <!--LEFT SIDEBAR start-->
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <!--LEFT SIDEBAR end-->
+
+
+
+
+    <!--CONTENT START -->
+
+    <!--VERSION 1 START-->
+    <div class="col-sm-8 text-left">
+      <% @users.each do |user| %>
+          <h2><%= user.email %></h2>
+          <p><%= user.encrypted_password %></p>
+          <%= link_to 'Show', user_path(user.id), class:"btn btn-primary" %>
+          <%= link_to 'Edit', edit_user_path(user.id), class:"btn btn-primary" %>
+          <hr>
+      <% end %>
+    </div>
+    <!--VERSION 1 END-->
+
+
+
+
+
+    <!--RIGHT SIDEBAR start-->
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <%= link_to 'New Project', new_project_path, class:"btn btn-primary" %>
+      </div>
+
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+    <!--RIGHT SIDEBAR end-->
+
+
+  </div>
+</div>
