@@ -11,33 +11,82 @@
 
 <!--VERSION 2-->
 <!--http://bootsnipp.com/snippets/featured/panel-with-tabs-->
-<%= image_tag @project.cover.url if @project.cover? %>
+<!--<%= image_tag @project.cover.url if @project.cover? %>-->
 
-<div class="col-md-6 col-md-offset-3">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @project.title %></h3>
-      <span class="pull-right">
-                        <!-- Tabs -->
-                        <ul class="nav panel-tabs">
-                            <li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
-                            <li><a href="#tab2" data-toggle="tab">Requirements</a></li>
-                            <li><a href="#tab3" data-toggle="tab">Date</a></li>
-                            <li><a href="#tab4" data-toggle="tab">Call back</a></li>
-                        </ul>
-                    </span>
+<!--<div class="col-md-6 col-md-offset-3">-->
+  <!--<div class="panel panel-primary">-->
+    <!--<div class="panel-heading">-->
+      <!--<h3 class="panel-title"><%= @project.title %></h3>-->
+      <!--<span class="pull-right">-->
+                        <!--&lt;!&ndash; Tabs &ndash;&gt;-->
+                        <!--<ul class="nav panel-tabs">-->
+                            <!--<li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>-->
+                            <!--<li><a href="#tab2" data-toggle="tab">Requirements</a></li>-->
+                            <!--<li><a href="#tab3" data-toggle="tab">Date</a></li>-->
+                            <!--<li><a href="#tab4" data-toggle="tab">Call back</a></li>-->
+                        <!--</ul>-->
+                    <!--</span>-->
+    <!--</div>-->
+
+    <!--<div class="panel-body">-->
+      <!--<div class="tab-content">-->
+        <!--<div class="tab-pane active" id="tab1"><%= @project.description %></div>-->
+        <!--<div class="tab-pane" id="tab2">some requirments</div>-->
+        <!--<div class="tab-pane" id="tab3"><%= @project.created_at %></div>-->
+        <!--<div class="tab-pane" id="tab4">Company contacts</div>-->
+      <!--</div>-->
+
+    <!--</div>-->
+  <!--</div>-->
+  <!--<%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary"%>-->
+  <!--<%= link_to 'Back', projects_path, class:"btn btn-primary" %>-->
+<!--</div>-->
+
+
+<!-- VERSION 3 -->
+<!--http://bootsnipp.com/snippets/MRgWB-->
+
+<!-- Side container -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <p>-Creator's profile summary goes here-</p>
+
     </div>
+    <div class="col-sm-9">
 
-    <div class="panel-body">
-      <div class="tab-content">
-        <div class="tab-pane active" id="tab1"><%= @project.description %></div>
-        <div class="tab-pane" id="tab2">some requirments</div>
-        <div class="tab-pane" id="tab3"><%= @project.created_at %></div>
-        <div class="tab-pane" id="tab4">Company contacts</div>
+      <!-- conatiner end -->
+
+      <!-- Project -->
+      <div id="project-container">
+        <div class="panel-heading resume-heading">
+          <div class="row">
+            <p class="row-of-elements">Published: <%= @project.created_at.to_date %></p>
+            <div id="editing-buttons" class="row-of-elements">
+              <div class="row-of-elements">
+                <%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary"%>
+              </div>
+              <div class="row-of-elements">
+                <%= link_to 'Delete', @project, class:"btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+            <%= image_tag @project.cover.url if @project.cover? %>
+            <h2><%= @project.title %></h2>
+          </div>
+        </div>
+        <div class="project-info">
+          <h4>Summary</h4>
+          <%= @project.description %>
+        </div>
+        <div class="project-info" id="contact">
+          <h4>Contact information</h4>
+          <%= @project.contact %>
+        </div>
       </div>
-
     </div>
+    <!-- Project end -->
+
   </div>
-  <%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary"%>
-  <%= link_to 'Back', projects_path, class:"btn btn-primary" %>
+</div>
 </div>
