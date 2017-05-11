@@ -61,3 +61,7 @@ gem 'carrierwave', '~> 1.0'
 # Devise gem
 gem 'devise', '~> 4.2', '>= 4.2.1'
 
+# Will_paginate gem
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+
