@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20170511164559) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
     t.string   "cover"
+    t.integer  "user_id"
     t.string   "contact"
   end
 
