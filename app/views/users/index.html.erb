@@ -1,10 +1,88 @@
-<p id="notice"><%= notice %></p>
-<div class="container-fluid text-center">
+<div class="container-fluid">
+  <div class="row content">
 
-  <% @users.each do |user| %>
-      <h2><%= user.email %></h2>
-      <%= link_to 'Show', user_path(user.id), class:"btn btn-primary" %>
-      <hr>
-  <% end %>
+    <!--LEFT SIDEBAR start-->
+    <div class="col-sm-2 sidenav" id="projects-sidenav">
+      <div id="create-project">
+        <legend>Do something</legend>
+        <%= link_to 'Something', landingpage_landingpage_path, class:"btn btn-primary" %>
+      </div>
 
+      <fieldset class="search-field">
+        <legend>Sort by skills</legend>
+        <p>Search function goes here later</p>
+      </fieldset>
+
+    </div>
+    <!--LEFT SIDEBAR end-->
+
+    <!--CONTENT START -->
+
+    <!--VERSION 1 START-->
+    <div class="col-sm-8">
+
+      <% @users.each do |user| %>
+        <div class="row" id="styleChildren">
+
+          <div class="col-sm-8 text-left">
+            <div class="row">
+              <div class="col-sm-12">
+                <h4>
+                  <%= user.email %>
+                </h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <%= user.about %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <%= link_to 'Show', user_path(user.id), class:"btn btn-primary pull-left alignToBottomOfParent" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4 userImgContainer">
+            <% if user.image.blank? %>
+                <span class="glyphicon-align-center glyphicon-globe placeholderGlyph"></span>
+            <% else %>
+                <%= image_tag user.image %>
+            <% end %>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+
+      <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+    </div>
+    <!--VERSION 1 END-->
+
+
+
+
+
+
+
+    <!--RIGHT SIDEBAR start-->
+    <div class="col-sm-2 sidenav">
+
+      <div class="well">
+        <p>ADS</p>
+      </div>
+
+      <div class="well">
+        <p>ADS</p>
+      </div>
+
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+    <!--RIGHT SIDEBAR end-->
+
+
+  </div>
 </div>
+

@@ -93,3 +93,17 @@ h1 span, p span, h3 span {
   color: $fontColor !important;
 }
 
+.userImgContainer{
+  width: 150px;
+  height: 150px;
+  text-align: center;
+}
+.userImgContainer span{
+  font-size: xx-large;
+  line-height: 150px;
+}
+
+#styleChildren > * {
+  padding-top: 3%;
+}
+
