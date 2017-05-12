@@ -13,7 +13,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   # Just to see how fixtures works
-  test "test_setup_fixture_users" do
+  test "setup_fixture_users" do
     assert_equal(1, User.all.count)
 
     userExist = User.find_by(email: 'foo@bar.no')
@@ -36,7 +36,7 @@ class UserTest < ActiveSupport::TestCase
 
 
   #1     all essential fields
-  test "test_user attributes must not be empty" do
+  test "user attributes must not be empty" do
     user = User.new
     assert user.invalid?
     assert user.errors[:email].any?, "email validation"
@@ -47,20 +47,20 @@ class UserTest < ActiveSupport::TestCase
   end
 
   #2    email (devise validation)
-  test "test_user_email_not_match_reg_expression" do
+  test "user_email_not_match_reg_expression" do
     #Arrange
     user = @user
 
     #Act
     #Assert
     user.email="s"
-    assert_not user.valid?
+    assert_not user.valid?, "email does not match reg exp"
 
     user.email="a@a"
-    assert_not user.valid?
+    assert_not user.valid?, "email does not match reg exp"
 
     user.email="a@a."
-    assert_not user.valid?
+    assert_not user.valid?, "email does not match reg exp"
 
     user.email="a@a.n"
     assert user.valid?
@@ -68,7 +68,7 @@ class UserTest < ActiveSupport::TestCase
 
   #3    username   expression ^[a-z0-9_-]{3,15}$
   #     only english, no uppercase, no unicorns symbols(letters), no numbers, 3-30 length
-  test "test_user_username_validation" do
+  test "user_username_validation" do
     #Arrange
     user = @user
 
@@ -97,7 +97,7 @@ class UserTest < ActiveSupport::TestCase
 
   #4    first name   expression [a-zA-Z]{2,30} -
   #     only english, no unicorns symbols(letters), no numbers, 3-30 length
-  test "test_user_first_name_validation1" do
+  test "user_first_name_validation1" do
     #Arrange
     user = @user
 
@@ -129,7 +129,7 @@ class UserTest < ActiveSupport::TestCase
 
   #5    last name   expression [a-zA-Z]{2,30} -
   #     only english, no unicorns symbols(letters), no numbers, 3-30 length
-  test "test_user_last_name_validation1" do
+  test "user_last_name_validation1" do
     #Arrange
     user = @user
 
@@ -161,7 +161,7 @@ class UserTest < ActiveSupport::TestCase
 
 
 
-  test "test_create_save_new_valid_users_email_username_unique" do
+  test "create_save_new_valid_users_email_username_unique" do
     #Arrange
     userValid = User.new(
         email: "eva@gmail.no",
@@ -175,7 +175,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal(2, User.all.count)
   end
 
-  test "test_create_save_new_users_email_not_unique" do
+  test "create_save_new_users_email_not_unique" do
     #Arrange
     userEmailConstraint = User.new(
         email: @user.email,
@@ -190,7 +190,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal(1, User.all.count)
   end
 
-  test "test_create_save_new_users_username_not_unique" do
+  test "create_save_new_users_username_not_unique" do
     #Arrange
     userUsernameConstraint = User.new(
         email: "eva@eva.no",
