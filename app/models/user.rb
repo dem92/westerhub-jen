@@ -4,5 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :projects
+  validates :username, presence: true
+  validates :username, uniqueness: true, if: -> { self.username.present? }
+
+  has_many :projects, dependent: :destroy
 end
