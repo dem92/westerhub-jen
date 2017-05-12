@@ -60,7 +60,7 @@
 
       <!-- Project -->
       <div id="project-container">
-        <div class="panel-heading resume-heading">
+        <div class="panel-heading project-heading">
           <div class="row">
             <p class="row-of-elements">Published: <%= @project.created_at.to_date %></p>
             <div id="editing-buttons" class="row-of-elements">
@@ -86,7 +86,7 @@
         <div class="project-info" id="contact">
           <h4>Departments</h4>
           <% @project.tags.each do |tag| %>
-              <p class="department<%= tag.id %>"><%= tag.name %></p>
+              <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
           <% end %>
         </div>
       </div>

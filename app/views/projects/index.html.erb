@@ -38,7 +38,7 @@
           <h2><%= project.title %></h2>
           <p><%= limit_description(project) %></p>
           <% project.tags.each do |tag| %>
-              <p class="department<%= tag.id %>"><%= tag.name %></p>
+              <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
           <% end %>
           <br>
           <%= link_to 'Show', project, class:"btn btn-primary" %>
