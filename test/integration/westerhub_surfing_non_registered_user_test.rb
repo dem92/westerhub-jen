@@ -1,6 +1,8 @@
 require 'test_helper'
 
-class WesterhubFlowTest < ActionDispatch::IntegrationTest
+### Class for testing actions of unregistered user
+
+class WesterhubSurfingNonRegisteredUserTest < ActionDispatch::IntegrationTest
 
   test "can see the welcome page_not_logged" do
     get "/"
@@ -13,7 +15,7 @@ class WesterhubFlowTest < ActionDispatch::IntegrationTest
     get "/projects"
     assert_response :success
     assert_equal '/projects', path
-    assert_select "a", {:text=>"New Project"},
+    assert_select "a", {:text=>"New project"},
                                     "Button create has title New Project"
   end
 
