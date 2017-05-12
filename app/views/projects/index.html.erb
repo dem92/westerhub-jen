@@ -1,12 +1,32 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 <div class="container-fluid text-center">
   <div class="row content">
 
     <!--LEFT SIDEBAR start-->
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+    <div class="col-sm-2 sidenav" id="projects-sidenav">
+      <div id="create-project">
+        <legend>Create project</legend>
+        <%= link_to 'New project', new_project_path, class:"btn btn-primary" %>
+      </div>
+
+      <fieldset class="search-field">
+        <legend>Sort by department</legend>
+        <%= search_form_for @q do |f| %>
+
+            <div class="field">
+              <%= f.collection_check_boxes :tags_id_in_any, Tag.all, :id, :name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+              <% end %>
+              <br>
+            </div>
+
+            <div class="actions"><%= f.submit "Search" %></div>
+        <% end %>
+      </fieldset>
+
     </div>
     <!--LEFT SIDEBAR end-->
 
@@ -16,12 +36,16 @@
     <div class="col-sm-8 text-left">
       <% @projects.each do |project| %>
           <h2><%= project.title %></h2>
-          <p><%= project.description %></p>
+          <p><%= limit_description(project) %></p>
+          <% project.tags.each do |tag| %>
+              <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
+          <% end %>
+          <br>
           <%= link_to 'Show', project, class:"btn btn-primary" %>
-          <%= link_to 'Edit', edit_project_path(project), class:"btn btn-primary" %>
-          <%= link_to 'Destroy', project, class:"btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
           <hr>
       <% end %>
+
+      <%= will_paginate @projects, renderer: BootstrapPagination::Rails %>
     </div>
     <!--VERSION 1 END-->
 
@@ -85,8 +109,13 @@
 
     <!--RIGHT SIDEBAR start-->
     <div class="col-sm-2 sidenav">
+
       <div class="well">
-        <%= link_to 'New Project', new_project_path, class:"btn btn-primary" %>
+        <p>ADS</p>
+      </div>
+
+      <div class="well">
+        <p>ADS</p>
       </div>
 
       <div class="well">

@@ -1,4 +1,5 @@
 class CoverUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -38,12 +39,14 @@ class CoverUploader < CarrierWave::Uploader::Base
   # For images you might use something like this:
   def extension_whitelist
     # %w(jpg jpeg gif png)
-    %w(jpg)
+    %w(jpg png)
   end
 
   def size_range
     0..1.megabytes
   end
+
+  process resize_to_limit(150, 150)
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

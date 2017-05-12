@@ -14,8 +14,6 @@
     <%= render partial: "shared/navbar" %>
 
     <% if current_page?(root_url) %>
-      <% if notice %> <div class="alert alert-info"><%= notice %></div> <% end %>
-      <% if alert %> <div class="alert alert-warning"><%= alert %></div> <% end %>
       <%= yield %>
     <% else %>
       <div class="container">

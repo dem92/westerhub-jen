@@ -57,7 +57,14 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 # Carrierwave gem - file uploading
 gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
 
 # Devise gem
 gem 'devise', '~> 4.2', '>= 4.2.1'
 
+# Will_paginate gem
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+
+# Ransack gem, for searching in projects
+gem 'ransack'

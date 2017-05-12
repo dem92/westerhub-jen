@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+<div class="container-fluid text-center">
+
+  <% @users.each do |user| %>
+      <h2><%= user.email %></h2>
+      <%= link_to 'Show', user_path(user.id), class:"btn btn-primary" %>
+      <hr>
+  <% end %>
+
+</div>
