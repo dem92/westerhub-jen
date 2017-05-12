@@ -3,12 +3,12 @@
 
     <!--LEFT SIDEBAR start-->
     <div class="col-sm-2 sidenav" id="projects-sidenav">
-      <div id="create-project">
+      <div class="row" id="create-project">
         <legend>Create project</legend>
         <%= link_to 'New project', new_project_path, class:"btn btn-primary" %>
       </div>
 
-      <fieldset class="search-field">
+      <fieldset class="row search-field">
         <legend>Sort by department</legend>
         <%= search_form_for @q do |f| %>
 
@@ -32,15 +32,29 @@
 <!--CONTENT START -->
 
     <!--VERSION 1 START-->
-    <div class="col-sm-8 text-left">
+    <div class="col-sm-8">
       <% @projects.each do |project| %>
-          <h2><%= project.title %></h2>
-          <p><%= limit_description(project) %></p>
-          <% project.tags.each do |tag| %>
-              <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
-          <% end %>
-          <br>
-          <%= link_to 'Show', project, class:"btn btn-primary" %>
+          <div class="row">
+            <% if project.cover?%>
+              <div class="col-sm-9 text-left">
+            <% else %>
+              <div class="col-sm-12 text-left">
+            <% end %>
+                <h2><%= project.title %></h2>
+                <p>Publisher: -insert name of user who created the project-</p>
+                <p><%= truncate(project.description, length: 200, separator: ' ') %></p>
+                <% project.tags.each do |tag| %>
+                    <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
+                <% end %>
+                <br>
+                <%= link_to 'Show', project, class:"btn btn-primary" %>
+            </div>
+            <% if project.cover?%>
+              <div class="col-sm-3 project-row-img">
+                <%= image_tag project.cover.thumb.url %>
+              </div>
+            <% end %>
+          </div>
           <hr>
       <% end %>
 
@@ -54,23 +68,23 @@
 
 
 
-    <!--RIGHT SIDEBAR start-->
-    <div class="col-sm-2 sidenav">
+      <!--RIGHT SIDEBAR start-->
+      <div class="col-sm-2 sidenav">
 
-      <div class="well">
-        <p>ADS</p>
-      </div>
+        <div class="well">
+          <p>ADS</p>
+        </div>
 
-      <div class="well">
-        <p>ADS</p>
-      </div>
+        <div class="well">
+          <p>ADS</p>
+        </div>
 
-      <div class="well">
-        <p>ADS</p>
+        <div class="well">
+          <p>ADS</p>
+        </div>
       </div>
+      <!--RIGHT SIDEBAR end-->
+
     </div>
-    <!--RIGHT SIDEBAR end-->
-
-
   </div>
 </div>
