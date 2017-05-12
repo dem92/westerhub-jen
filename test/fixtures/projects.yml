@@ -2,8 +2,7 @@
 
 # the way how to define associations between tables are messy
 # two cases works:
-# user_id: <%= User.find(ActiveRecord::FixtureSet.identify('user1')).id %>
-# user: user1
+
 
 
 project1:
