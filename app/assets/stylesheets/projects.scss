@@ -173,13 +173,15 @@
   display: inline-block;
 }
 
-// -- Show --
+.well {
+  margin-top: 20px;
+  height: 150px;
+  text-align: center;
+}
 
-#project-container {
-  border-color: #eee;
-  border-style: solid;
-  border-width: 1px 1px 1px 1px;
-  border-radius: 3px;
+// -- Show --
+#creator-profile {
+  margin-top: 20px;
 }
 
 .project-info {
