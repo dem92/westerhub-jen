@@ -8,4 +8,6 @@
 
 project1:
   description: project description
+  title: project title
   user: user1
+  contact: some contact information
