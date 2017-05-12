@@ -223,3 +223,71 @@
 }
 
 /**** Project end ****/
+
+// -- Department tags
+
+.department1 {
+  display: inline-block;
+  background-color: #b5dafb;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.department2 {
+  display: inline-block;
+  background-color: #fbc1b2;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.department3 {
+  display: inline-block;
+  background-color: #91efb0;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.department4 {
+  display: inline-block;
+  background-color: #fbe777;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.department5 {
+  display: inline-block;
+  background-color: #d6baff;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+#projects-sidenav {
+  text-align: left;
+  margin-top: 20px;
+}
+
+#error_explanation h2 {
+  font-size: 16px;
+}
+
+#error_explanation * {
+  color: #de5244;
+}
+
+#project-form label {
+  margin-top: 10px;
+}
+
+#create-project {
+  margin-bottom: 36px;
+}
