@@ -1,4 +1,5 @@
 class CoverUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -44,6 +45,8 @@ class CoverUploader < CarrierWave::Uploader::Base
   def size_range
     0..1.megabytes
   end
+
+  process resize_to_limit(150, 150)
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
