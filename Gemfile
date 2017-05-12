@@ -65,3 +65,5 @@ gem 'devise', '~> 4.2', '>= 4.2.1'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
+# Ransack gem, for searching in projects
+gem 'ransack'
