@@ -2,7 +2,7 @@ require 'test_helper'
 
 ### Class for testing actions of unregistered user
 
-class WesterhubSurfingNonRegisteredUserTest < ActionDispatch::IntegrationTest
+class NonRegisteredUserFlowTest < ActionDispatch::IntegrationTest
 
   test "can see the welcome page_not_logged" do
     get "/"
