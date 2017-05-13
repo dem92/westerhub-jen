@@ -3,7 +3,7 @@ require 'test_helper'
 # TODO: Discuss which fields for user registration are required (necessary)
 # TODO: check http code response when user not registered after Act
 
-class RegistrationFlowsTest < ActionDispatch::IntegrationTest
+class RegistrationFlowTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:user1)
@@ -21,6 +21,7 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
    delete  "/users/sign_out"
   end
 
+  private
   def registerNewUser(firstname, lastname, username, email, password, confirmation)
     post "/users",
          params: { user:
@@ -44,6 +45,7 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
     return user_valid
   end
 
+#######       TEST STARTS       ######
 
   test "user_logout" do
     #Arrange
@@ -95,15 +97,18 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
     # error messages
     # assert_select "div#error_explanation", 1, "Need error message on page, date for registration user is not valid"
 
+    #Assert
     assert_equal 1, User.all.count,
                  "Backend has no validation for request body next params\nfirst_name, last_name, password_confirmation"
   end
 
   test "register_new_user_not_valid_username" do
+    #Arrange
     logout
     assert_equal(1, User.all.count)
-
     user = getValidUser
+
+    #Act
     registerNewUser(user.first_name,
                     user.last_name,
                     @invalid_data,
@@ -111,6 +116,7 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
                     @valid_password,
                     @valid_password)
 
+    #Assert
     assert_equal 1, User.all.count,
                  "Backend has no validation for request body next params\nusername"
   end
@@ -119,14 +125,16 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
     #Arrange
     logout
     assert_equal(1, User.all.count)
-    #Act
     user = getValidUser
+
+    #Act
     registerNewUser(user.first_name,
                     user.last_name,
                     user.username,
                     @invalid_data,
                     @valid_password,
                     @valid_password)
+
     #Assert
     assert_response :success
     assert_equal '/users', path
@@ -134,10 +142,12 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "register_new_user_not_valid_password" do
+    #Arrange
     logout
     assert_equal(1, User.all.count)
-
     user = getValidUser
+
+    #Act
     registerNewUser(user.first_name,
                     user.last_name,
                     user.username,
@@ -145,6 +155,7 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
                     @invalid_data,
                     @invalid_data)
 
+    #Assert
     assert_equal 1, User.all.count,
                  "Backend has no validation for request body next params\npassword"
   end
@@ -155,7 +166,7 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
     assert_equal(1, User.all.count)
     user = getValidUser
 
-    #Act
+    #Act - twice
     for i in 0..1
       registerNewUser(user.first_name,
                       user.last_name,
@@ -170,27 +181,30 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
                  "Backend has no validation to prevent register twice same user data"
   end
 
-
-
-
-
-  test "login_existing_user" do
+  test "register_new_user_when_user_logged_in_system" do
+    #Arrange
     logout
-    assert_equal 0, @user.sign_in_count
-    post "/users/sign_in",
-         params: {user: {
-             email: @user.email,
-             password: "foofoo",
-             remember_me: 0
-         }}
-    assert_response :redirect
-    assert_equal '/users/sign_in', path
-    follow_redirect!
-    assert_response :success
-    assert_equal '/', path
-    # refresh object with new db data
-    @user.reload
-    assert_equal 1, @user.sign_in_count
+    assert_equal(1, User.all.count)
+    user = getValidUser
+
+    #Act - twice
+      registerNewUser(user.first_name,
+                      user.last_name,
+                      user.username,
+                      user.email,
+                      @valid_password,
+                      @valid_password)
+
+    assert_equal 2, User.all.count
+
+      registerNewUser("joakim",
+                  "joakim",
+                  "joakim",
+                  "j@j.no",
+                  "password",
+                  "password")
+
+      assert_equal 2, User.all.count
   end
 
 end
