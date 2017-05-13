@@ -1,15 +1,14 @@
-<!--<p id="notice"><%= notice %></p>-->
-<div class="container-fluid text-center">
+<div class="container-fluid">
   <div class="row content">
 
     <!--LEFT SIDEBAR start-->
     <div class="col-sm-2 sidenav" id="projects-sidenav">
-      <div id="create-project">
+      <div class="row" id="create-project">
         <legend>Create project</legend>
         <%= link_to 'New project', new_project_path, class:"btn btn-primary" %>
       </div>
 
-      <fieldset class="search-field">
+      <fieldset class="row search-field">
         <legend>Sort by department</legend>
         <%= search_form_for @q do |f| %>
 
@@ -33,15 +32,29 @@
 <!--CONTENT START -->
 
     <!--VERSION 1 START-->
-    <div class="col-sm-8 text-left">
+    <div class="col-sm-8">
       <% @projects.each do |project| %>
-          <h2><%= project.title %></h2>
-          <p><%= limit_description(project) %></p>
-          <% project.tags.each do |tag| %>
-              <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
-          <% end %>
-          <br>
-          <%= link_to 'Show', project, class:"btn btn-primary" %>
+          <div class="row">
+            <% if project.cover?%>
+              <div class="col-sm-9 text-left">
+            <% else %>
+              <div class="col-sm-12 text-left">
+            <% end %>
+                <h2><%= project.title %></h2>
+                <p>Publisher: -insert name of user who created the project-</p>
+                <p><%= truncate(project.description, length: 200, separator: ' ') %></p>
+                <% project.tags.each do |tag| %>
+                    <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
+                <% end %>
+                <br>
+                <%= link_to 'Show', project, class:"btn btn-primary" %>
+            </div>
+            <% if project.cover?%>
+              <div class="col-sm-3 project-row-img">
+                <%= image_tag project.cover.thumb.url %>
+              </div>
+            <% end %>
+          </div>
           <hr>
       <% end %>
 
@@ -50,80 +63,28 @@
     <!--VERSION 1 END-->
 
 
-    <!--VERSION 2 START-->
-    <!--http://bootsnipp.com/snippets/featured/bootstrap-4-card-->
-    <!--<div class="col-sm-8 text-left">-->
-      <!--<% @projects.each do |project| %>-->
-          <!--<div class="col-sm-4">-->
-            <!--<div class="card card-inverse card-info">-->
-
-              <!--<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
-              <!--<div class="card-block">-->
-                <!--<h4 class="card-title">-->
-                  <!--<%= truncate(project.title, length: 20) %>-->
-                <!--</h4>-->
-                <!--<div class="card-text">-->
-                  <!--<%= truncate(project.description, length: 65) %>-->
-                <!--</div>-->
-              <!--</div>-->
-
-              <!--<div class="card-footer">-->
-                <!--<%= link_to 'Show', project, class:"btn btn-info btn-sm" %>-->
-                <!--<%= link_to 'Edit', edit_project_path(project), class:"btn btn-warning btn-sm" %>-->
-                <!--<%= link_to 'Destroy', project, class:"btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-      <!--<% end %>-->
-    <!--</div>-->
-    <!--VERSION 2 END-->
-
-
-
-    <!--VERSION 3 START-->
-    <!--<div class="col-sm-8 text-left">-->
-      <!--<% @projects.each do |project| %>-->
-          <!--<h1><%= project.title %></h1>-->
-          <!--<p><%= project.description %></p>-->
-          <!--<div>-->
-            <!--<span class="badge"><%= project.created_at %></span>-->
-            <!--<div class="pull-right">-->
-              <!--<span><%= link_to 'Show', project, class: "label label-success" %></span>-->
-              <!--<span><%= link_to 'Edit', edit_project_path(project), class:"label label-primary"%></span>-->
-              <!--<span><%= link_to 'Destroy', project, class:"label label-danger", method: :delete, data: { confirm: 'Are you sure?' } %></span>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<hr>-->
-      <!--<% end %>-->
-    <!--</div>-->
-    <!--VERSION 3 END-->
-
-
-<!--CONTENT END-->
 
 
 
 
 
+      <!--RIGHT SIDEBAR start-->
+      <div class="col-sm-2 sidenav">
 
+        <div class="well">
+          <p>ADS</p>
+        </div>
 
-    <!--RIGHT SIDEBAR start-->
-    <div class="col-sm-2 sidenav">
+        <div class="well">
+          <p>ADS</p>
+        </div>
 
-      <div class="well">
-        <p>ADS</p>
+        <div class="well">
+          <p>ADS</p>
+        </div>
       </div>
+      <!--RIGHT SIDEBAR end-->
 
-      <div class="well">
-        <p>ADS</p>
-      </div>
-
-      <div class="well">
-        <p>ADS</p>
-      </div>
     </div>
-    <!--RIGHT SIDEBAR end-->
-
-
   </div>
 </div>

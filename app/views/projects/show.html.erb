@@ -1,93 +1,71 @@
-<!--<p id="notice"><%= notice %></p>-->
-<!--VERSION 1-->
-<!--<div class="col-sm-12 text-left">-->
-  <!--<h2><%= @project.title %></h2>-->
-  <!--<strong>Description:</strong>-->
-  <!--<p><%= @project.description %></p>-->
-  <!--<hr>-->
-  <!--<%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary"%>-->
-  <!--<%= link_to 'Back', projects_path, class:"btn btn-primary" %>-->
-<!--</div>-->
-
-<!--VERSION 2-->
-<!--http://bootsnipp.com/snippets/featured/panel-with-tabs-->
-<!--<%= image_tag @project.cover.url if @project.cover? %>-->
-
-<!--<div class="col-md-6 col-md-offset-3">-->
-  <!--<div class="panel panel-primary">-->
-    <!--<div class="panel-heading">-->
-      <!--<h3 class="panel-title"><%= @project.title %></h3>-->
-      <!--<span class="pull-right">-->
-                        <!--&lt;!&ndash; Tabs &ndash;&gt;-->
-                        <!--<ul class="nav panel-tabs">-->
-                            <!--<li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>-->
-                            <!--<li><a href="#tab2" data-toggle="tab">Requirements</a></li>-->
-                            <!--<li><a href="#tab3" data-toggle="tab">Date</a></li>-->
-                            <!--<li><a href="#tab4" data-toggle="tab">Call back</a></li>-->
-                        <!--</ul>-->
-                    <!--</span>-->
-    <!--</div>-->
-
-    <!--<div class="panel-body">-->
-      <!--<div class="tab-content">-->
-        <!--<div class="tab-pane active" id="tab1"><%= @project.description %></div>-->
-        <!--<div class="tab-pane" id="tab2">some requirments</div>-->
-        <!--<div class="tab-pane" id="tab3"><%= @project.created_at %></div>-->
-        <!--<div class="tab-pane" id="tab4">Company contacts</div>-->
-      <!--</div>-->
-
-    <!--</div>-->
-  <!--</div>-->
-  <!--<%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary"%>-->
-  <!--<%= link_to 'Back', projects_path, class:"btn btn-primary" %>-->
-<!--</div>-->
-
-
 <!-- VERSION 3 -->
 <!--http://bootsnipp.com/snippets/MRgWB-->
 
-<!-- Side container -->
+
 
 <div class="container">
+  <div class="row">
+
+    <!-- Side container -->
     <div class="col-sm-2" id="creator-profile">
       <p>-Creator's profile summary goes here-</p>
-
     </div>
-    <div class="col-sm-8">
 
-      <!-- conatiner end -->
+    <!-- Project -->
+    <div class="col-sm-8" id="project-container">
 
-      <!-- Project -->
-      <div id="project-container">
-        <div class="panel-heading project-heading">
-          <div class="row">
-            <p class="row-of-elements">Published: <%= @project.created_at.to_date %></p>
-            <div id="editing-buttons" class="row-of-elements">
-              <div class="row-of-elements">
-                <%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary"%>
+      <!-- Heading -->
+      <div class="row" id="project-heading">
+        <div class="col-sm-9">
+          <p class="row-of-elements">Published: <%= @project.created_at.to_date %></p>
+          <% if user_signed_in? && @project.user_id == current_user.id %>
+              <div id="editing-buttons" class="row-of-elements">
+                <%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary row-of-elements"%>
+                <%= link_to 'Delete', @project, class:"btn btn-primary row-of-elements", method: :delete, data: { confirm: 'Are you sure?' } %>
               </div>
-              <div class="row-of-elements">
-                <%= link_to 'Delete', @project, class:"btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
-              </div>
-            </div>
-            <%= image_tag @project.cover.url if @project.cover? %>
-            <h2><%= @project.title %></h2>
-          </div>
-        </div>
-        <div class="project-info">
-          <h4>Summary</h4>
-          <%= @project.description %>
-        </div>
-        <div class="project-info" id="contact">
-          <h4>Contact information</h4>
-          <%= @project.contact %>
-        </div>
-        <div class="project-info" id="contact">
-          <h4>Departments</h4>
+          <% end %>
+
+          <h2><%= @project.title %></h2>
           <% @project.tags.each do |tag| %>
               <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
           <% end %>
         </div>
+
+        <!-- Show picture if present -->
+        <div class="col-sm-3">
+          <% if @project.cover? %>
+
+              <div data-toggle="modal" data-target="#modal">
+                <%= image_tag @project.cover.thumb.url %>
+              </div>
+
+              <div id="modal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-sm">
+
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                      <%= image_tag @project.cover.url %>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <!-- Heading end -->
+
+      <div class="row project-info">
+        <h4>Summary</h4>
+        <%= @project.description %>
+      </div>
+
+      <div class="row project-info" id="contact">
+        <h4>Contact information</h4>
+        <%= @project.contact %>
       </div>
     </div>
     <!-- Project end -->
@@ -108,4 +86,6 @@
       </div>
     </div>
     <!--RIGHT SIDEBAR end-->
+
+  </div>
 </div>

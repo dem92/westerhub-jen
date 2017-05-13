@@ -184,6 +184,18 @@
   margin-top: 20px;
 }
 
+#project-heading {
+  margin-top: 20px;
+}
+
+.modal-dialog{
+  position: relative;
+  display: table; //This is important
+  overflow-y: auto;
+  overflow-x: auto;
+  width: auto;
+}
+
 .project-info {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
@@ -236,13 +248,22 @@
   display: inline-block;
   padding: 2px 10px;
   border-radius: 12px;
-  margin-right: 5px;
+  margin-right: 3px;
   text-align: center;
 }
 
 // -- Department tags end --
 
-// -- Index sidenav --
+// -- Index --
+
+.project-row-img {
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+
+// -- Sidenav --
 
 #projects-sidenav {
   text-align: left;
@@ -253,7 +274,9 @@
   margin-bottom: 36px;
 }
 
-// -- Index sidenav end --
+// -- Sidenav end --
+
+// -- Index end --
 
 // -- Form --
 
