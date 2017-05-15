@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
     #@projects = Project.all.reverse_order.paginate(:page => params[:page], per_page: 10)
 
     @q = Project.search(params[:q])
-    @projects = @q.result(distinct: true).reverse_order.paginate(:page => params[:page], per_page: 10)
+    @projects = @q.result(distinct: true).reverse_order.paginate(:page => params[:page], per_page: 5)
   end
 
   # GET /projects/1
