@@ -107,3 +107,27 @@ h1 span, p span, h3 span {
   padding-top: 3%;
 }
 
+// -- Thumb images --
+
+.global-img-round-edges {
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+// -- Thumb images end --
+
+// -- Side bars --
+
+.global-right-bar {
+  margin-top: 20px;
+  border: 0px solid #eee;
+  border-left-width: 1px;
+}
+
+.global-left-bar {
+  margin-top: 20px;
+  border: 0px solid #eee;
+  border-right-width: 1px;
+}
+
+// -- Side bars --
