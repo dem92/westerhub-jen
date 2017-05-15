@@ -44,7 +44,7 @@
                 <p>Publisher: -insert name of user who created the project-</p>
                 <p><%= truncate(project.description, length: 200, separator: ' ') %></p>
                 <% project.tags.each do |tag| %>
-                    <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
+                    <p class="department" id="department<%= tag.cssName %>"><%= tag.name %></p>
                 <% end %>
                 <br>
                 <%= link_to 'Show', project, class:"btn btn-primary" %>

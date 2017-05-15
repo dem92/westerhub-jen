@@ -27,7 +27,7 @@
 
           <h2><%= @project.title %></h2>
           <% @project.tags.each do |tag| %>
-              <p class="department" id="department<%= tag.id %>"><%= tag.name %></p>
+              <p class="department" id="department<%= tag.cssName %>"><%= tag.name %></p>
           <% end %>
         </div>
 
