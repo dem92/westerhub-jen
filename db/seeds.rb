@@ -29,7 +29,9 @@ user1 = User.create!(
     password: "qwerty",
     username: "evawillpaginate",
     first_name: "Eva",
-    last_name: "Dahlø"
+    last_name: "Dahlø",
+    about: "I like sorting and pagination.
+I make web pages well organized."
 )
 
 user2 = User.create!(
@@ -37,7 +39,9 @@ user2 = User.create!(
     password: "qwerty",
     username: "joakimdevise",
     first_name: "Joakim",
-    last_name: "Jacobsen"
+    last_name: "Jacobsen",
+    about: "Authentication is my game.
+If you're as legit as I am, let's create something authentic together."
 )
 
 user3 = User.create!(
@@ -45,7 +49,9 @@ user3 = User.create!(
     password: "qwerty",
     username: "nikitatest",
     first_name: "Nikita",
-    last_name: "Zhevnitskiy"
+    last_name: "Zhevnitskiy",
+    about: "I like testing.
+I will find the flaws in your projects and break it so you can build something beautiful from the remains."
 )
 
 project1 = Project.create!(
