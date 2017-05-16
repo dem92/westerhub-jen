@@ -2,7 +2,7 @@
   <div class="row content">
 
     <!--LEFT SIDEBAR start-->
-    <div class="col-sm-2 sidenav" id="projects-sidenav">
+    <div class="col-sm-2 sidenav global-left-bar">
       <div class="row" id="create-project">
         <legend>Create project</legend>
         <%= link_to 'New project', new_project_path, class:"btn btn-primary" %>
@@ -41,7 +41,7 @@
               <div class="col-sm-12 text-left">
             <% end %>
                 <h2><%= project.title %></h2>
-                <p>Publisher: -insert name of user who created the project-</p>
+                <p>Publisher: <%= User.find(project.user_id).first_name %> <%= User.find(project.user_id).last_name %></p>
                 <p><%= truncate(project.description, length: 200, separator: ' ') %></p>
                 <% project.tags.each do |tag| %>
                     <p class="department" id="department<%= tag.cssName %>"><%= tag.name %></p>
@@ -69,7 +69,7 @@
 
 
       <!--RIGHT SIDEBAR start-->
-      <div class="col-sm-2 sidenav">
+      <div class="col-sm-2 sidenav global-right-bar">
 
         <div class="well">
           <p>ADS</p>

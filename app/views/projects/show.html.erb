@@ -7,8 +7,22 @@
   <div class="row">
 
     <!-- Side container -->
-    <div class="col-sm-2" id="creator-profile">
-      <p>-Creator's profile summary goes here-</p>
+    <div class="col-sm-2 global-left-bar">
+      <% user = User.find(@project.user_id) %>
+      <% image = user.image.thumb.url %>
+      <div class="row" >
+        <% if !image.nil? %>
+          <%= link_to image_tag image, :class => "global-img-round-edges" %>
+        <% end %>
+      </div>
+      <div class="row">
+        <h4>Name: </h4>
+        <p id="project-user-name"><%= user.first_name %> <%= user.last_name %></p>
+      </div>
+      <div class="row">
+        <h4>Introduction:</h4>
+        <p><%= user.about %></p>
+      </div>
     </div>
 
     <!-- Project -->
@@ -36,7 +50,7 @@
           <% if @project.cover? %>
 
               <div data-toggle="modal" data-target="#modal">
-                <%= image_tag @project.cover.thumb.url %>
+                <%= image_tag @project.cover.thumb.url, :class => "global-img-round-edges" %>
               </div>
 
               <div id="modal" class="modal fade" role="dialog">
@@ -71,7 +85,7 @@
     <!-- Project end -->
 
     <!--RIGHT SIDEBAR start-->
-    <div class="col-sm-2 sidenav">
+    <div class="col-sm-2 sidenav global-right-bar">
 
       <div class="well">
         <p>ADS</p>
