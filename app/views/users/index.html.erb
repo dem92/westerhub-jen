@@ -2,15 +2,28 @@
   <div class="row content">
 
     <!--LEFT SIDEBAR start-->
-    <div class="col-sm-2 sidenav" id="projects-sidenav">
-      <div id="create-project">
-        <legend>Do something</legend>
-        <%= link_to 'Something', landingpage_landingpage_path, class:"btn btn-primary" %>
+    <div class="col-sm-2 sidenav global-left-bar">
+      <div class="row" id="create-project">
+        <legend>Create project</legend>
+        Do we need anything here?
       </div>
 
-      <fieldset class="search-field">
-        <legend>Sort by skills</legend>
-        <p>Search function goes here later</p>
+      <fieldset class="row search-field">
+        <legend>Sort by department</legend>
+        <%= search_form_for @q do |f| %>
+
+            <div class="field">
+              <%= f.collection_check_boxes :tags_id_in_any, Tag.all, :id, :name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+              <% end %>
+              <br>
+            </div>
+
+            <div class="actions"><%= f.submit "Search" %></div>
+        <% end %>
       </fieldset>
 
     </div>
@@ -20,69 +33,57 @@
 
     <!--VERSION 1 START-->
     <div class="col-sm-8">
-
       <% @users.each do |user| %>
-        <div class="row" id="styleChildren">
-
-          <div class="col-sm-8 text-left">
-            <div class="row">
-              <div class="col-sm-12">
-                <h4>
-                  <%= user.email %>
-                </h4>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <%= user.about %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <%= link_to 'Show', user_path(user.id), class:"btn btn-primary pull-left alignToBottomOfParent" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-4 userImgContainer">
-            <% if user.image.blank? %>
-                <span class="glyphicon-align-center glyphicon-globe placeholderGlyph"></span>
+          <div class="row">
+            <% if user.image?%>
+                <div class="col-sm-9 text-left">
             <% else %>
-                <%= image_tag user.image %>
+                <div class="col-sm-12 text-left">
             <% end %>
-          </div>
-        </div>
-        <hr>
+            <h2><%= user.username %></h2>
+            <p><%= truncate(user.about, length: 200, separator: ' ') %></p>
+            <% user.tags.each do |tag| %>
+                <p class="department" id="department<%= tag.cssName %>"><%= tag.name %></p>
+            <% end %>
+            <br>
+            <%= link_to 'Show', user, class:"btn btn-primary" %>
+            </div>
+            <% if user.image?%>
+                <div class="col-sm-3 project-row-img">
+                  <%= image_tag user.image.thumb.url %>
+                </div>
+            <% end %>
+            </div>
+            <hr>
       <% end %>
 
       <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+      </div>
+      <!--VERSION 1 END-->
+
+
+
+
+
+
+
+      <!--RIGHT SIDEBAR start-->
+      <div class="col-sm-2 sidenav global-right-bar">
+
+        <div class="well">
+          <p>ADS</p>
+        </div>
+
+        <div class="well">
+          <p>ADS</p>
+        </div>
+
+        <div class="well">
+          <p>ADS</p>
+        </div>
+      </div>
+      <!--RIGHT SIDEBAR end-->
+
     </div>
-    <!--VERSION 1 END-->
-
-
-
-
-
-
-
-    <!--RIGHT SIDEBAR start-->
-    <div class="col-sm-2 sidenav">
-
-      <div class="well">
-        <p>ADS</p>
-      </div>
-
-      <div class="well">
-        <p>ADS</p>
-      </div>
-
-      <div class="well">
-        <p>ADS</p>
-      </div>
-    </div>
-    <!--RIGHT SIDEBAR end-->
-
-
   </div>
 </div>
-
