@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.reverse_order.paginate(:page => params[:page], per_page: 10)
+    # @users = User.all.reverse_order.paginate(:page => params[:page], per_page: 10)
+    @q = User.search(params[:q])
+    @users = @q.result(distinct: true).reverse_order.paginate(:page => params[:page], per_page: 5)
   end
 
   def destroy
