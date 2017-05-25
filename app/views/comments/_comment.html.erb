@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Submitted by: <%= comment.name %></h3>
+      </div>
+      <div class="panel-body">
+        <%= comment.body %>
+      </div>
+      <div class="panel-footer">
+        <%= time_ago_in_words(comment.created_at) %> <%= link_to 'delete', project_comment_path(comment.project_id, comment), method: :delete, data: {confirm: 'Are you sure you want to delete comment'} %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -131,3 +131,12 @@ h1 span, p span, h3 span {
 }
 
 // -- Side bars --
+
+.list-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 1em;
+  width: 100%;
+}
+
