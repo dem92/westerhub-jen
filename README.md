@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.com/dem92/westerhub-jen.svg?token=XBxNCWhRe4J4qpFpzXXD&branch=master)](https://travis-ci.com/dem92/westerhub-jen)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
