@@ -68,3 +68,6 @@ gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
 # Ransack gem, for searching in projects
 gem 'ransack'
+
+# Test coverage report
+gem 'coveralls', require: false
