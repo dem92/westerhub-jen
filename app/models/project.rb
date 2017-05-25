@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   mount_uploader :cover, CoverUploader
   belongs_to :user
+  has_many :comments, dependent: :destroy
   has_many :project_tags
   has_many :tags, :through => :project_tags
 

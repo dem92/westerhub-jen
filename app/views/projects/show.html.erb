@@ -81,6 +81,22 @@
         <h4>Contact information</h4>
         <%= @project.contact %>
       </div>
+
+      <!--Comments section-->
+      <br>
+      <div class="row">
+        <div class="col-sm-5 pull-left">
+          <h3><%= @project.comments.count %> Comments</h3>
+        </div>
+        <div class="col-sm-3 pull-right list-content">
+          <%= link_to 'New Comment', new_project_comment_path(@project), id: "new_comment", remote: true, class:"btn btn-primary" %>
+        </div>
+        <div class="col-sm-8" id="myForm">
+
+        </div>
+      </div>
+      <%= render @project.comments %>
+      <br>
     </div>
     <!-- Project end -->
 

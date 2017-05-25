@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   get 'users/destroy'
 
   devise_for :users
-  resources :projects
+
+  resources :projects do
+    resources :comments
+  end
+
   resources :users
   get 'landingpage/landingpage'
   root to: 'landingpage#landingpage'
