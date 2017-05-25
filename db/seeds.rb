@@ -29,7 +29,7 @@ user1 = User.create!(
     password: "qwerty",
     username: "evawillpaginate",
     first_name: "Eva",
-    last_name: "Dahlø",
+    last_name: "Dahlo",
     about: "I like sorting and pagination.
 I make web pages well organized."
 )
