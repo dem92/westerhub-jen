@@ -1,14 +1,18 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  respond_to :html, :js
 
   # GET /projects
   # GET /projects.json
   def index
-    #@projects = Project.all.reverse_order.paginate(:page => params[:page], per_page: 10)
-
     @q = Project.search(params[:q])
     @projects = @q.result(distinct: true).reverse_order.paginate(:page => params[:page], per_page: 5)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /projects/1
