@@ -12,7 +12,7 @@
       <% image = user.image.thumb.url %>
       <div class="row" >
         <% if !image.nil? %>
-          <%= link_to image_tag image, :class => "global-img-round-edges" %>
+          <%= link_to image_tag image, :class => 'global-img-round-edges' %>
         <% end %>
       </div>
       <div class="row">
@@ -34,8 +34,8 @@
           <p class="row-of-elements">Published: <%= @project.created_at.to_date %></p>
           <% if user_signed_in? && @project.user_id == current_user.id %>
               <div id="editing-buttons" class="row-of-elements">
-                <%= link_to 'Edit', edit_project_path(@project),  class:"btn btn-primary row-of-elements"%>
-                <%= link_to 'Delete', @project, class:"btn btn-primary row-of-elements", method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Edit', edit_project_path(@project),  class: 'btn btn-primary row-of-elements'%>
+                <%= link_to 'Delete', @project, class: 'btn btn-primary row-of-elements', method: :delete, data: {confirm: 'Are you sure?' } %>
               </div>
           <% end %>
 
@@ -50,7 +50,7 @@
           <% if @project.cover? %>
 
               <div data-toggle="modal" data-target="#modal">
-                <%= image_tag @project.cover.thumb.url, :class => "global-img-round-edges" %>
+                <%= image_tag @project.cover.thumb.url, :class => 'global-img-round-edges' %>
               </div>
 
               <div id="modal" class="modal fade" role="dialog">
@@ -101,7 +101,7 @@
     <!-- Project end -->
 
     <!--RIGHT SIDEBAR start-->
-    <div class="col-sm-2 sidenav global-right-bar">
+    <div class="col-sm-2 global-right-bar">
 
       <div class="well">
         <p>ADS</p>

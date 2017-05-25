@@ -2,7 +2,7 @@
   <div class="row content">
 
     <!--LEFT SIDEBAR start-->
-    <div class="col-sm-2 sidenav global-left-bar">
+    <div class="col-sm-2 global-left-bar">
       <div class="row" id="create-project">
         <legend>Create project</legend>
         <%= link_to 'New project', new_project_path, class:"btn btn-primary" %>
@@ -10,7 +10,7 @@
 
       <fieldset class="row search-field">
         <legend>Sort by department</legend>
-        <%= search_form_for @q do |f| %>
+        <%= search_form_for @q, :remote => true do |f| %>
 
             <div class="field">
               <%= f.collection_check_boxes :tags_id_in_any, Tag.all, :id, :name do |b| %>
@@ -22,6 +22,14 @@
               <br>
             </div>
 
+            <div class="field">
+              <%= f.label :title_cont, "Title contains:" %>
+              <br>
+              <%= f.text_field :title_cont, id: 'search-projects-field' %>
+            </div>
+
+            <br>
+
             <div class="actions"><%= f.submit "Search" %></div>
         <% end %>
       </fieldset>
@@ -29,47 +37,17 @@
     </div>
     <!--LEFT SIDEBAR end-->
 
-<!--CONTENT START -->
-
-    <!--VERSION 1 START-->
+    <!--CONTENT START -->
     <div class="col-sm-8">
-      <% @projects.each do |project| %>
-          <div class="row">
-            <% if project.cover?%>
-              <div class="col-sm-9 text-left">
-            <% else %>
-              <div class="col-sm-12 text-left">
-            <% end %>
-                <h2><%= project.title %></h2>
-                <p>Publisher: <%= User.find(project.user_id).first_name %> <%= User.find(project.user_id).last_name %></p>
-                <p><%= truncate(project.description, length: 200, separator: ' ') %></p>
-                <% project.tags.each do |tag| %>
-                    <p class="department" id="department<%= tag.cssName %>"><%= tag.name %></p>
-                <% end %>
-                <br>
-                <%= link_to 'Show', project, class:"btn btn-primary" %>
-            </div>
-            <% if project.cover?%>
-              <div class="col-sm-3 project-row-img">
-                <%= image_tag project.cover.thumb.url %>
-              </div>
-            <% end %>
-          </div>
-          <hr>
-      <% end %>
 
-      <%= will_paginate @projects, renderer: BootstrapPagination::Rails %>
-    </div>
-    <!--VERSION 1 END-->
+      <div id="projects_form">
+        <%= render partial: 'projects/index_projects'%>
+      </div>
 
+    <!-- CONTENT END -->
 
-
-
-
-
-
-      <!--RIGHT SIDEBAR start-->
-      <div class="col-sm-2 sidenav global-right-bar">
+    <!--RIGHT SIDEBAR start-->
+      <div class="col-sm-2 global-right-bar">
 
         <div class="well">
           <p>ADS</p>
