@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+Comment.delete_all
 ProjectTag.delete_all
 Tag.delete_all
 Project.delete_all
@@ -23,100 +16,83 @@ tag4 = Tag.create!(name: 'Communication', cssName: 'Communication')
 
 tag5 = Tag.create!(name: 'Management', cssName: 'Management')
 
-
+# Seeds for Users
 user1 = User.create!(
-    email: "eva@gmail.no",
+    email: "eva@someemailservice.no",
     password: "qwerty",
-    username: "evawillpaginate",
+    username: "eva_d",
     first_name: "Eva",
     last_name: "Dahlo",
-    about: "I like sorting and pagination.
-I make web pages well organized."
+    about: "In this application I have mainly worked with the project pages, sorting and searching.",
+    tags: Tag.where(name: "Arts")
 )
+user1.image = Rails.root.join("app/assets/images/2.png").open
+user1.save!
 
 user2 = User.create!(
-    email: "joakim@gmail.no",
+    email: "joakim@someemailservice.no",
     password: "qwerty",
-    username: "joakimdevise",
+    username: "joakim_j",
     first_name: "Joakim",
     last_name: "Jacobsen",
-    about: "Authentication is my game.
-If you're as legit as I am, let's create something authentic together."
+    about: "In this project I have worked with user authentication, the landing page, and the collaborator pages.",
+    tags: Tag.where(name: "Film, TV, games")
 )
+user2.image = Rails.root.join("app/assets/images/3.png").open
+user2.save!
 
 user3 = User.create!(
-    email: "nikita@gmail.no",
+    email: "nikita@someemailservice.no",
     password: "qwerty",
-    username: "nikitatest",
+    username: "nikita_z",
     first_name: "Nikita",
     last_name: "Zhevnitskiy",
-    about: "I like testing.
-I will find the flaws in your projects and break it so you can build something beautiful from the remains."
+    about: "In this application I have worked mainly with testing, and with Docker and Heroku.",
+    tags: Tag.where(name: "Technology")
 )
+user3.image = Rails.root.join("app/assets/images/1.png").open
+user3.save!
 
+# Seeds for projects
 project1 = Project.create!(
     user_id: user1.id,
-    title:          'Create a web page for Nordea AS',
-    description:    'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    title:          'Create a web page for the cafeteria',
+    description:    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra, nunc in accumsan dictum, sapien sem lobortis ante, luctus tempus est orci eu nisl. Vivamus justo eros, viverra vitae pellentesque nec, tincidunt nec turpis. Donec vitae dui elementum erat convallis tincidunt. Mauris vehicula quam at porta iaculis. Mauris varius lacus sed ante volutpat ullamcorper ac sed tortor. Nulla facilisi. Fusce lobortis feugiat nulla, sed gravida orci aliquam in. Vivamus sapien erat, blandit scelerisque dictum sagittis, aliquet ac neque. Integer at tempor odio, eu sagittis quam. Sed tincidunt, risus in posuere mattis, metus augue sodales nisl, sed dapibus lectus turpis in nisi.',
     contact: 'Phone: 98989898')
-# . . .
+
 project2 = Project.create!(
     user_id: user2.id,
-    title: 'Remake of Lord of the Rings',
-    description: "The Lord of the Rings is an epic high-fantasy novel written by English author J. R. R. Tolkien.
-The story began as a sequel to Tolkien's 1937 fantasy novel The Hobbit, but eventually developed into a much larger work.
-    Written in stages between 1937 and 1949, The Lord of the Rings is one of the best-selling novels ever written,
-with over 150 million copies sold.",
-    contact: 'lotr_remake@yahoo.com')
-# . . .
+    title: 'Make a TV commercial',
+    description: "Nam quis sapien nec ligula lacinia finibus dictum ut lectus. Nunc sit amet nibh sollicitudin, pharetra massa sit amet, accumsan massa. Cras vitae orci nec est pharetra facilisis quis non massa. Aenean cursus venenatis est, et elementum dolor mollis sit amet. Integer molestie iaculis aliquam. Nullam blandit efficitur ligula, eget vehicula metus finibus venenatis. Nunc sagittis, purus vitae volutpat tempus, diam diam convallis risus, eget porttitor massa arcu at tortor. Praesent tristique, massa vitae sollicitudin vulputate, lacus lectus facilisis tellus, eget gravida libero erat at nulla. Phasellus sem ex, aliquam eu enim sit amet, imperdiet tempor ligula. Quisque finibus bibendum sapien sit amet cursus. Sed et aliquet leo, a volutpat turpis. Phasellus sed nunc eu felis porta faucibus. Vivamus non elit eget elit maximus rhoncus. ",
+    contact: 'cool_commercial@mymail.com')
 
-project3 = Project.create!(user_id: user3.id,
-                           title: 'Concert for charity',
-                           description:"Hosting a benefit concert series for your cause is one of the easiest and most rewarding
-methods of raising money. Not only will you build local awareness and gain support for your organization,
-but you'll also get to enjoy some great music in the process. With careful planning and effective marketing,
-you'll soon be on your way to hosting successful events.",
-                           contact: 'Phone: 23198738 or 34546323')
+project3 = Project.create!(
+    user_id: user3.id,
+    title: 'Concert for charity',
+    description:"Donec lobortis nisl non pharetra vehicula. Suspendisse tempor tempus ligula. Sed quam enim, luctus vel lacus ac, dapibus tincidunt ante. Nunc eu egestas nisi, ac sollicitudin dolor. Mauris efficitur lectus et sem accumsan luctus. In rutrum tellus lorem, in consectetur magna interdum porttitor. Nam viverra, mauris et imperdiet fringilla, augue risus laoreet ex, non dapibus purus erat ut ante. Nam fermentum, est consequat faucibus viverra, lorem ligula vestibulum quam, eu tempus lectus nibh et nibh. In vitae dolor ornare, gravida lacus sit amet, consectetur leo. Suspendisse tincidunt leo vel libero tincidunt, at dignissim orci porta. ",
+    contact: 'Phone: 12345678')
 
 project4 = Project.create!(
     user_id: user1.id,
-    title:          'Create a magazine about street art',
-    description:    "Street art is visual art created in public locations,
-usually unsanctioned artwork executed outside of the context of traditional art venues.
-The term gained popularity during the graffiti art boom of the early 1980s and continues to be applied to subsequent incarnations.
-Stencil graffiti, wheatpasted poster art or sticker art,
-and street installation or sculpture are common forms of modern street art. Video projection,
-yarn bombing and Lock On sculpture became popularized at the turn of the 21st century.",
-    contact: "street_art_yo@gmail.com")
-# . . .
+    title: 'Create a magazine about street art',
+    description: " Aenean metus libero, ullamcorper non blandit quis, tempus vel arcu. Morbi eros nunc, feugiat vitae enim ornare, mattis scelerisque libero. Nunc interdum, felis sit amet aliquet interdum, mi nibh rhoncus sapien, et venenatis urna quam id diam. In hac habitasse platea dictumst. Sed finibus justo egestas ex volutpat, vitae vestibulum neque ornare. Duis et massa pellentesque, feugiat ante sit amet, tincidunt lorem. Fusce nec arcu vel nibh venenatis rhoncus. Nulla at placerat risus, a rutrum odio. Vivamus et mauris in tellus vulputate mollis eu et ex. Maecenas et consectetur odio. Vivamus blandit, magna feugiat tincidunt tincidunt, lorem sem facilisis felis, vitae pulvinar sapien lacus sed tellus. Morbi malesuada malesuada leo, et euismod nunc pretium vitae.",
+    contact: "street_art@epost.no")
+
 project5 = Project.create!(
     user_id: user2.id,
-    title: 'Merge Kristianerdals',
-    description: 'Det har vært murring i studentmassen på Westerdals etter at det ble kjent at Løvenskiold-brødrene
-har gått inn intensjonsavtale om å selge Westerdals til Høyskolen Kristiania.
-Mens Høyskolen Kristiania-rektor Trond Blindheim er i lykkerus over det mulige oppkjøpet reagerer Westerdals
-studentene på oppkjøpet ved å gjøre det de kan best: lage memes.',
-    contact: 'kristianerdals@hotmail.com')
-# . . .
+    title: 'Make a VR game',
+    description: 'Praesent tristique, massa vitae sollicitudin vulputate, lacus lectus facilisis tellus, eget gravida libero erat at nulla. Phasellus sem ex, aliquam eu enim sit amet, imperdiet tempor ligula. Quisque finibus bibendum sapien sit amet cursus. Sed et aliquet leo, a volutpat turpis. Phasellus sed nunc eu felis porta faucibus. Vivamus non elit eget elit maximus rhoncus. Donec lobortis nisl non pharetra vehicula. Suspendisse tempor tempus ligula. Sed quam enim, luctus vel lacus ac, dapibus tincidunt ante. Nunc eu egestas nisi, ac sollicitudin dolor. Mauris efficitur lectus et sem accumsan luctus. In rutrum tellus lorem, in consectetur magna interdum porttitor. Nam viverra, mauris et imperdiet fringilla, augue risus laoreet ex, non dapibus purus erat ut ante. Nam fermentum, est consequat faucibus viverra, lorem ligula vestibulum quam, eu tempus lectus nibh et nibh.',
+    contact: 'get-on-the-vr-train@hotmail.vr')
+project5.cover = Rails.root.join("app/assets/images/vr.jpg").open
+project5.save!
 
 project6 = Project.create!(
     user_id: user3.id,
-    title: 'Create our new robotic overlord',
-    description:'From SIRI to self-driving cars, artificial intelligence (AI) is progressing rapidly.
-While science fiction often portrays AI as robots with human-like characteristics,
-AI can encompass anything from Google’s search algorithms to IBM’s Watson to autonomous weapons.
+    title: 'Create a Slackbot',
+    description:'Cras rutrum, velit quis molestie lobortis, dolor dui scelerisque erat, quis gravida metus sapien eu lacus. Sed quis lorem ultricies, vehicula nunc finibus, porta nunc. Mauris eu convallis diam, quis gravida leo. Donec at neque facilisis, ultricies nunc interdum, bibendum quam. Nunc luctus egestas maximus. Curabitur sodales laoreet felis ut blandit. Nunc ultrices iaculis pharetra. Donec varius sollicitudin ante eget vestibulum. Cras commodo, quam ac lobortis rutrum, ex risus consequat eros, at porttitor dolor nulla in sem. Cras commodo viverra risus, non semper felis congue ut. In mollis vulputate elit nec volutpat. Phasellus et metus dui. Morbi sed laoreet ante, eu lacinia turpis. Nulla facilisi. Integer in augue ac metus pellentesque vehicula in eget urna. Ut lorem odio, imperdiet vel diam et, efficitur consequat enim.',
+    contact: 'bot@mailingservice.net')
 
-Artificial intelligence today is properly known as narrow AI (or weak AI),
-in that it is designed to perform a narrow task (e.g. only facial recognition or only internet searches or only driving a car).
-However, the long-term goal of many researchers is to create general AI (AGI or strong AI).
-While narrow AI may outperform humans at whatever its specific task is, like playing chess or solving equations,
-AGI would outperform humans at nearly every cognitive task.',
-    contact: 'glados@aperture.com')
-
+# Seeds for project_tag
 ProjectTag.create!(
     project_id: project1.id,
     tag_id: tag1.id
@@ -180,21 +156,6 @@ ProjectTag.create!(
 ProjectTag.create!(
     project_id: project5.id,
     tag_id: tag2.id
-)
-
-ProjectTag.create!(
-    project_id: project5.id,
-    tag_id: tag3.id
-)
-
-ProjectTag.create!(
-    project_id: project5.id,
-    tag_id: tag4.id
-)
-
-ProjectTag.create!(
-    project_id: project5.id,
-    tag_id: tag5.id
 )
 
 ProjectTag.create!(
@@ -202,3 +163,38 @@ ProjectTag.create!(
     tag_id: tag1.id
 )
 
+# Seeds for project_tag
+# UserTag.create!(
+#     project_id: project6.id,
+#     tag_id: tag1.id
+# )
+# TODO: Fix this
+
+# Seeds for comments
+Comment.create!(
+    project_id: project5.id,
+    user_id: user3.id,
+    name: user3.first_name,
+    body: "This looks very interesting. I've sent you an email."
+)
+
+Comment.create!(
+    project_id: project5.id,
+    user_id: user2.id,
+    name: user2.first_name,
+    body: "Could still use some more people with experience in 3D modeling."
+)
+
+Comment.create!(
+    project_id: project6.id,
+    user_id: user1.id,
+    name: user1.first_name,
+    body: "This looks very interesting. I've sent you an email."
+)
+
+Comment.create!(
+    project_id: project1.id,
+    user_id: user2.id,
+    name: user2.first_name,
+    body: "This looks very interesting. I've sent you an email."
+)
