@@ -9,12 +9,11 @@ class CommentTest < ActiveSupport::TestCase
    @comment = comments(:comment1)
    assert @comment.valid?
 
-   # TODO: length validation needs to be compared to user table
    # test variables
-   @shortName = "0"*2
-   assert @shortName.to_s.length<3
-   @longName = "0"*51
-   assert @longName.to_s.length>50
+   @shortName = "0"
+   assert @shortName.to_s.length<2
+   @longName = "0"*31
+   assert @longName.to_s.length>30
    @validName = @comment.name
    assert @validName.to_s.length>3 && @validTitle.to_s.length<50
    @shortBody = "0" * 9

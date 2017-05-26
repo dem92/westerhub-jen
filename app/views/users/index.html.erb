@@ -3,10 +3,6 @@
 
     <!--LEFT SIDEBAR start-->
     <div class="col-sm-2 sidenav global-left-bar">
-      <div class="row" id="create-project">
-        <legend>Create project</legend>
-        Do we need anything here?
-      </div>
 
       <fieldset class="row search-field">
         <legend>Sort by department</legend>
@@ -50,7 +46,7 @@
             </div>
             <% if user.image?%>
                 <div class="col-sm-3 project-row-img">
-                  <%= image_tag user.image.thumb.url %>
+                  <%= image_tag user.image.thumb.url, :class => "global-img-round-edges" %>
                 </div>
             <% end %>
             </div>

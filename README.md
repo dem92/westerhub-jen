@@ -28,7 +28,7 @@ On the landing page the user is introduced to the concept of the page.
 Further down some of the collaborators' experience with using the page will be highlighted.
 
 On the Projects page a user can see the title, picture (if present), creator, short description, and tags of all projects registered on the site.
-The page is paginated and shows a limited amount of projects at the same time.
+The page is paginated and shows a limited amount of projects at the same time, and the projects are ordered from newest to oldest.
 Each project has a "Show" button, when clicked it will send the user to the page of the corresponding project.
 On the left side of the page there is a button that sends a logged in user to the page for creating a new project,
 a user that is not logged in will be redirected to the log in page.
@@ -38,7 +38,7 @@ On the the right side on both this page and the page for a specific project ther
 The page for a specific project shows the date it was published, it's title, picture (if present), creator, description, tags, and contact information.
 If the user clicks on the picture a bigger version of the picture is shown.
 If the user is the publisher of the project they are also able to edit or delete the project.
-On the bottom of the page users are able to leave comments if logged in, and see previously published comments.
+On the bottom of the page a user is able to see previously published comments, and leave comments if logged in.
 On the left side there is a short summary of the profile for the publisher of the project.
 
 
