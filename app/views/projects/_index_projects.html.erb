@@ -16,7 +16,7 @@
     </div>
     <% if project.cover?%>
         <div class="col-sm-3 project-row-img">
-          <%= image_tag project.cover.thumb.url %>
+          <%= image_tag project.cover.thumb.url, :class => 'global-img-round-edges' %>
         </div>
     <% end %>
     </div>
