@@ -22,9 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def special_auth
-    if user_signed_in?
-      super
-    else
+    if !user_signed_in?
       render :js => "window.location = '#{new_user_session_path}'"
       # respond_to do |format|
       #   format.html { redirect_to new_user_session_path, notice: 'You need to sign in to write comments' }
