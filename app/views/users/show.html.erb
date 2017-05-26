@@ -1,5 +1,4 @@
-<h1>Profile for <%= @user.email %></h1>
-<p>Here we can build a NIZE profile bla bla bla</p>
+<h1>Your profile</h1>
 
 <div class="panel panel-info">
 
@@ -23,7 +22,9 @@
     <h3 class="panel-title">Skills</h3>
   </div>
   <div class="panel-body">
-    <%= @user.skills %>
+    <% @user.tags.each do |tag| %>
+        <p class="department" id="department<%= tag.cssName %>"><%= tag.name %></p>
+    <% end %>
   </div>
 
 
@@ -38,7 +39,7 @@
     <h3 class="panel-title">Image</h3>
   </div>
   <div class="panel-body">
-    <%=  @user.email %>
+    <%= image_tag @user.image.thumb.url %>
   </div>
 
 </div>
