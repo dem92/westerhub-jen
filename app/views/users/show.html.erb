@@ -38,9 +38,11 @@
   <div class="panel-heading">
     <h3 class="panel-title">Image</h3>
   </div>
-  <div class="panel-body">
-    <%= image_tag @user.image.thumb.url %>
-  </div>
+  <% if @user.image.thumb.url!=nil %>
+    <div class="panel-body">
+      <%= image_tag @user.image.thumb.url %>
+    </div>
+  <% end %>
 
 </div>
 

@@ -89,4 +89,29 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
     assert_equal 1, @user.sign_in_count, "User login twice"
   end
 
+  # Delete user, asserts for cascade also
+  test "delete_existing_user" do
+    #Arrange
+    logout
+    assert_equal 0, @user.sign_in_count
+    login(@user.email, @valid_password)
+
+    @user.reload
+
+    assert_equal 1, @user.sign_in_count
+
+    assert_equal 1, User.all.count
+    assert_equal 1, Comment.all.count
+    assert_equal 1, Project.all.count
+
+
+    #Act (user still in system, send login request again)
+    delete "/users/#{@user.id}"
+
+    #Assert
+    assert_equal 0, User.all.count
+    assert_equal 0, Comment.all.count
+    assert_equal 0, Project.all.count
+  end
+
 end
