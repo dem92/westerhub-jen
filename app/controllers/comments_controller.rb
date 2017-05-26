@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
 
   def create
     @project = Project.find(params[:project_id])
-    @comment = @project.comments.create(params[:comment].permit(:name, :body))
+    @comment = @project.comments.create(params[:comment].permit(:name, :body, :user_id))
     redirect_to project_path(@project)
   end
 
@@ -16,4 +17,5 @@ class CommentsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
   end
+
 end
