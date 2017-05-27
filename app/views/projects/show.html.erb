@@ -1,8 +1,5 @@
 <!-- VERSION 3 -->
-<!--http://bootsnipp.com/snippets/MRgWB-->
-
-
-
+<!--Based on http://bootsnipp.com/snippets/MRgWB-->
 <div class="container">
   <div class="row">
 
@@ -12,7 +9,7 @@
       <% image = user.image.thumb.url %>
       <div class="row" >
         <% if !image.nil? %>
-          <%= link_to image_tag image, :class => 'global-img-round-edges' %>
+          <%= link_to image_tag(image, :class => 'global-img-round-edges'), user %>
         <% end %>
       </div>
       <div class="row">
