@@ -23,7 +23,7 @@ user1 = User.create!(
     username: "eva_d",
     first_name: "Eva",
     last_name: "Dahlo",
-    about: "In this application I have mainly worked with the project pages, sorting and searching.",
+    about: "Westerhub project: Responsibilities included working with AJAX, and designing the pages for projects. Also implemented features for sorting and searching, uploading images, and worked with validation of the project and comment models.",
     tags: Tag.where(name: "Arts")
 )
 user1.image = Rails.root.join("app/assets/images/2.png").open
@@ -35,7 +35,7 @@ user2 = User.create!(
     username: "joakim_j",
     first_name: "Joakim",
     last_name: "Jacobsen",
-    about: "In this project I have worked with user authentication, the landing page, and the collaborator pages.",
+    about: "Westerhub project: In addition to focusing on authentication through the Devise gem and validating user input on login/sign in, I was also responsible for implementing the landingpage, comments on projects, and the footer.",
     tags: Tag.where(name: "Film, TV, games")
 )
 user2.image = Rails.root.join("app/assets/images/3.png").open
@@ -47,7 +47,7 @@ user3 = User.create!(
     username: "nikita_z",
     first_name: "Nikita",
     last_name: "Zhevnitskiy",
-    about: "In this application I have worked mainly with testing, and with Docker and Heroku.",
+    about: "Westerhub project: Main responsibility was testing: unit, integration, controllers and test coverage reports. Additional responsibilities were continuous integration, configuration of docker images, travis and deployment to heroku.",
     tags: Tag.where(name: "Technology")
 )
 user3.image = Rails.root.join("app/assets/images/1.png").open
@@ -91,6 +91,8 @@ project6 = Project.create!(
     title: 'Create a Slackbot',
     description:'Cras rutrum, velit quis molestie lobortis, dolor dui scelerisque erat, quis gravida metus sapien eu lacus. Sed quis lorem ultricies, vehicula nunc finibus, porta nunc. Mauris eu convallis diam, quis gravida leo. Donec at neque facilisis, ultricies nunc interdum, bibendum quam. Nunc luctus egestas maximus. Curabitur sodales laoreet felis ut blandit. Nunc ultrices iaculis pharetra. Donec varius sollicitudin ante eget vestibulum. Cras commodo, quam ac lobortis rutrum, ex risus consequat eros, at porttitor dolor nulla in sem. Cras commodo viverra risus, non semper felis congue ut. In mollis vulputate elit nec volutpat. Phasellus et metus dui. Morbi sed laoreet ante, eu lacinia turpis. Nulla facilisi. Integer in augue ac metus pellentesque vehicula in eget urna. Ut lorem odio, imperdiet vel diam et, efficitur consequat enim.',
     contact: 'bot@mailingservice.net')
+project6.cover = Rails.root.join("app/assets/images/westercrabcroped.jpg").open
+project6.save!
 
 # Seeds for project_tag
 ProjectTag.create!(

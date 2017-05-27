@@ -4,36 +4,48 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.label :first_name %>
+    <p>
+      <%= f.text_field :first_name, autofocus: true %><br/><br/>
+    </p>
   </div>
 
   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.label :last_name %>
+    <p>
+      <%= f.text_field :last_name %><br/><br/>
+    </p>
   </div>
 
   <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.label :username %>
+    <p>
+      <%= f.text_field :username %><br/><br/>
+    </p>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <%= f.label :email %>
+    <p>
+      <%= f.email_field :email %><br/><br/>
+    </p>
   </div>
 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
+    <p>
+      <%= f.password_field :password, autocomplete: "off" %><br/><br/>
+    </p>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password_confirmation %>
+    <p>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %><br/><br/>
+    </p>
   </div>
 
   <div class="field">
