@@ -5,14 +5,102 @@
 #### Repositories
 // -- Remember to give Andrea read access
 * Git: https://github.com/dem92/westerhub-jen
-* Heroku:
+* Heroku: https://westerhub.herokuapp.com/
 
 #### Log in 
 // -- If needed. Can also be sent by e-mail if we don't want it in the readme.
 
-#### How to run the application
+## How to run the application
+#### 1 way (default)
+```bash
+bundle install
+rake db:setup 
+rails s
+```
+Open browser on `localhost:3000`
+#### 2 way (docker)
+1. In file `~/config/database.yml`
+change (uncomment) this lines
+```yml
+development:
+  <<: *default
+# username, password, host - settings for container
+#  username: postgres
+#  password:
+#  host: db
+  database: westerhub_development  
+  
+  ...
+  
+test:
+  <<: *default
+#  username: postgres
+#  password:
+#  host: db
+  database: westerhub_test
+```
+to 
+```yml
+development:
+  <<: *default
+# username, password, host - settings for container
+  username: postgres
+  password:
+  host: db
+  database: westerhub_development
+  
+  ...
+  
+test:
+  <<: *default
+  username: postgres
+  password:
+  host: db
+  database: westerhub_test
+```
+2. Open terminal in application root folder and
+build docker container
+```bash
+docker-compose build
+```
+3. Run application
+```bash
+docker-compose up
+```
+4. Open `new terminal` in application root folder and run
+```bash
+docker-compose run web rake db:setup
+docker-compose run web rake db:seed
+```
 
-#### How to run the tests
+##### !!! NB how to properly stop server 
+Strongly recommend use
+```bash
+docker-compose stop
+```
+to avoid 
+<a href="https://stackoverflow.com/questions/24627701/a-server-is-already-running-check-tmp-pids-server-pid-exiting-rails">pids</a> problem.
+This problem has also been mentioned in 
+<a href="https://docs.docker.com/compose/rails/#restart-the-application">docker get started</a>. 
+
+## How to run tests
+#### 1 way (default)
+* Test
+```bash
+rake test
+```
+* Generate test coverage report
+```bash
+COVERAGE=true rake tests
+```
+#### 2 way (docker)
+inside container's bash run same commands as 1 way (default)
+######! NB
+How to run container's bash
+```bash
+   docker-compose web rake bash
+```
+
 
 #### Description
 We wanted to create a web application for Westedals students.
@@ -56,6 +144,9 @@ The Companies page is not implemented, but would work the same way as the page f
 
 If the user tries to do something that requires a registered account they are redirected to the login page.
 
+
+
+
 ##### Summary of functionality:
 * Users are redirected when attempting to access restricted functionality
 * Pagination feature
@@ -71,6 +162,17 @@ A user can:
 * View, search and sort projects (with AJAX)
 * View and sort collaborators
 
+#### Team contributions
+Each team member participate in:
+* Planning
+* Development of project concept
+* Project specification
+* Pair programming
+* Code review
+* Bugs hunting
+* Documentation
+* Design
+
 #### Individual contributions
 
 ##### Eva Dahlø (dem92)
@@ -80,8 +182,6 @@ and worked with the image uploader, to save a big and a small version of the ima
 She contributed to the design of the navbar, and created the 404 page.
 She added validation for the comments and projects models, and made model tests for the comments.
 
-She participated in group planning and discussions, and with developing the concept of the project.
-
 ##### Joakim Jacobsen (JoakimEJ)
 Joakim's main focus throughout the project was to manage the Devise gem in order to have authentication
 for users. It was his job to make sure that unauthorised users did not have access to locations where this
@@ -90,7 +190,10 @@ projects/profiles/comments. He also set up the landingpage, the collaboration pa
 comments on projects and the footer. Validation on user input for signing up and logging in was also 
 his responsibility.
 
-##### Nikita Zhevnitskiy ( NikitaZhevnitskiy)
+##### Nikita Zhevnitskiy (NikitaZhevnitskiy)
+Nikita worked with tests. He was responsible for continuous integration & writing tests: unit, integration, controllers and test coverage report. 
+He administrate docker images and  setup docker, travis configuration. 
+He took responsibility for deployments. 
 
 #### Other relevant information, especially functionalities/libraries not discussed in class
 
