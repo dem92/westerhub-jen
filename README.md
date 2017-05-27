@@ -14,6 +14,14 @@ rake db:setup
 rails s
 ```
 Open browser on `localhost:3000`
+
+##### !!! NB
+`rake db:setup` might fail on Mac.
+
+Error message: `ActiveRecord::RecordInvalid: Validation failed: Image translation missing: en.errors.messages.mini_magick_processing_error`
+
+`bundle install` does not properly set up the mini_magick gem for image uploaders.
+If this happens we recommend using Docker, or find a different solution.
 #### 2 way (docker)
 1. In file `~/config/database.yml`
 change (uncomment) this lines
@@ -67,6 +75,7 @@ docker-compose up
 ```bash
 docker-compose run web rake db:setup
 ```
+Open browser on `localhost:3000`
 
 ##### !!! NB how to properly stop server 
 Strongly recommend to use
@@ -123,10 +132,11 @@ On the left side of the page there is a button for creating a new project.
 The user is also able to sort the projects by tags, or search for projects by title.
 
 The page for a specific project shows all information about the project.
-If the user clicks on the picture, a bigger version of the picture is shown.
+If the user clicks on the project picture, a bigger version of the picture is shown.
 If the user is the publisher of the project they are also able to edit or delete the project.
 On the bottom of the page a user is able to see previously published comments, and leave comments if logged in.
 On the left side there is a short summary of the profile of the publisher of the project.
+If the user clicks on the profile picture, they are sent to the profile.
 
 On the pages for creating or updating a project there is a form the user can fill out.
 The input is validated when the user submits the form.
