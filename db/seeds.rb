@@ -35,7 +35,7 @@ user2 = User.create!(
     username: "joakim_j",
     first_name: "Joakim",
     last_name: "Jacobsen",
-    about: "Westerhub project: In addition to focusing on authentication through the Devise gem and validating user input on login/sign in, I was also responsible for implementing the landingpage and footer.",
+    about: "Westerhub project: In addition to focusing on authentication through the Devise gem and validating user input on login/sign in, I was also responsible for implementing the landingpage, comments on projects, and the footer.",
     tags: Tag.where(name: "Film, TV, games")
 )
 user2.image = Rails.root.join("app/assets/images/3.png").open
@@ -91,6 +91,8 @@ project6 = Project.create!(
     title: 'Create a Slackbot',
     description:'Cras rutrum, velit quis molestie lobortis, dolor dui scelerisque erat, quis gravida metus sapien eu lacus. Sed quis lorem ultricies, vehicula nunc finibus, porta nunc. Mauris eu convallis diam, quis gravida leo. Donec at neque facilisis, ultricies nunc interdum, bibendum quam. Nunc luctus egestas maximus. Curabitur sodales laoreet felis ut blandit. Nunc ultrices iaculis pharetra. Donec varius sollicitudin ante eget vestibulum. Cras commodo, quam ac lobortis rutrum, ex risus consequat eros, at porttitor dolor nulla in sem. Cras commodo viverra risus, non semper felis congue ut. In mollis vulputate elit nec volutpat. Phasellus et metus dui. Morbi sed laoreet ante, eu lacinia turpis. Nulla facilisi. Integer in augue ac metus pellentesque vehicula in eget urna. Ut lorem odio, imperdiet vel diam et, efficitur consequat enim.',
     contact: 'bot@mailingservice.net')
+project6.cover = Rails.root.join("app/assets/images/westercrabcroped.jpg").open
+project6.save!
 
 # Seeds for project_tag
 ProjectTag.create!(
