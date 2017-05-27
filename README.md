@@ -83,6 +83,12 @@ She added validation for the comments and projects models, and made model tests 
 She participated in group planning and discussions, and with developing the concept of the project.
 
 ##### Joakim Jacobsen (JoakimEJ)
+Joakim's main focus throughout the project was to manage the Devise gem in order to have authentication
+for users. It was his job to make sure that unauthorised users did not have access to locations where this
+was needed, and also to ensure that only the owners themselves were able to delete or update 
+projects/profiles/comments. He also set up the landingpage, the collaboration page, profiles for users, 
+comments on projects and the footer. Validation on user input for signing up and logging in was also 
+his responsibility.
 
 ##### Nikita Zhevnitskiy ( NikitaZhevnitskiy)
 
