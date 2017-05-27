@@ -3,12 +3,8 @@
 [![Build Status](https://travis-ci.com/dem92/westerhub-jen.svg?token=XBxNCWhRe4J4qpFpzXXD&branch=master)](https://travis-ci.com/dem92/westerhub-jen)
 
 #### Repositories
-// -- Remember to give Andrea read access
 * Git: https://github.com/dem92/westerhub-jen
 * Heroku: https://westerhub.herokuapp.com/
-
-#### Log in 
-// -- If needed. Can also be sent by e-mail if we don't want it in the readme.
 
 ## How to run the application
 #### 1 way (default)
@@ -70,11 +66,10 @@ docker-compose up
 4. Open `new terminal` in application root folder and run
 ```bash
 docker-compose run web rake db:setup
-docker-compose run web rake db:seed
 ```
 
 ##### !!! NB how to properly stop server 
-Strongly recommend use
+Strongly recommend to use
 ```bash
 docker-compose stop
 ```
@@ -91,14 +86,18 @@ rake test
 ```
 * Generate test coverage report
 ```bash
-COVERAGE=true rake tests
+COVERAGE=true rake test
 ```
 #### 2 way (docker)
 inside container's bash run same commands as 1 way (default)
-######! NB
-How to run container's bash
+#### ! NB
+* Test
 ```bash
-   docker-compose web rake bash
+   docker-compose run web bash -c 'rake test'
+```
+* Generate test coverage report
+```bash
+   docker-compose run web bash -c 'COVERAGE=true rake test'
 ```
 
 
@@ -147,42 +146,49 @@ If the user tries to do something that requires a registered account they are re
 
 
 
-##### Summary of functionality:
-* Users are redirected when attempting to access restricted functionality
-* Pagination feature
-* Image uploading feature
-* Implementation of Google Maps
-* Model validation
+##### User flow:
 
-A user can:
-* Log in/register
+Any user can:
+* Register a new user
+* View all profiles, projects and comments
+* Users are redirected when attempting to access restricted functionality
+
+A Westerhub user can:
+* Log in
+* Publish/delete own comments
 * Publish/edit/delete own projects
 * Edit/delete own user profile
-* View all comments, publish/delete own comments on a project (with AJAX)
-* View, search and sort projects (with AJAX)
-* View and sort collaborators
+
+##### Summary of functionality:
+
+* Search function with sorting on projects and collaborators
+* Pagination feature
+* Model validation
+* Image uploading feature
+* Implementation of Google Maps
+* Registration/login feature
 
 #### Team contributions
-Each team member participate in:
+Each team member participated in:
 * Planning
 * Development of project concept
 * Project specification
 * Pair programming
 * Code review
-* Bugs hunting
+* Bug hunting
 * Documentation
 * Design
 
 #### Individual contributions
 
-##### Eva Dahlø (dem92)
+##### Eva Dahlø (Github: <a href="https://github.com/dem92">dem92</a>)
 Eva worked with designing the pages for projects.
-She implemented AJAX, and the functionality for sorting and searching the projects, 
+She implemented AJAX, and the functionality for sorting and searching the projects in addition to pagination, 
 and worked with the image uploader, to save a big and a small version of the images.
 She contributed to the design of the navbar, and created the 404 page.
 She added validation for the comments and projects models, and made model tests for the comments.
 
-##### Joakim Jacobsen (JoakimEJ)
+##### Joakim Jacobsen (Github: <a href="https://github.com/JoakimEJ">JoakimEJ</a>)
 Joakim's main focus throughout the project was to manage the Devise gem in order to have authentication
 for users. It was his job to make sure that unauthorised users did not have access to locations where this
 was needed, and also to ensure that only the owners themselves were able to delete or update 
@@ -190,25 +196,7 @@ projects/profiles/comments. He also set up the landingpage, the collaboration pa
 comments on projects and the footer. Validation on user input for signing up and logging in was also 
 his responsibility.
 
-##### Nikita Zhevnitskiy (NikitaZhevnitskiy)
+##### Nikita Zhevnitskiy (Github: <a href="https://github.com/NikitaZhevnitskiy">NikitaZhevnitskiy</a>)
 Nikita worked with tests. He was responsible for continuous integration & writing tests: unit, integration, controllers and test coverage report. 
-He administrate docker images and  setup docker, travis configuration. 
-He took responsibility for deployments. 
-
-#### Other relevant information, especially functionalities/libraries not discussed in class
-
-
-// -- Points below this line were included in the template, might not need to be included
-#### Ruby version
-
-#### System dependencies
-
-#### Configuration
-
-#### Database creation
-
-#### Database initialization
-
-#### Services (job queues, cache servers, search engines, etc.)
-
-#### Deployment instructions
+He administrated docker images, setup docker and travis configuration. 
+He alse took responsibility for deployments. 
