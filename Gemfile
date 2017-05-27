@@ -52,22 +52,22 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Bootstrap gem
+# For styling application
 gem 'bootstrap-sass', '~> 3.3.6'
 
-# Carrierwave gem - file uploading
+# Gems for image file uploading
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 
-# Devise gem
+# For user authentication, login and registration
 gem 'devise', '~> 4.2', '>= 4.2.1'
 
-# Will_paginate gem
+# For pagination
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
-# Ransack gem, for searching in projects
+# For searching and sorting
 gem 'ransack'
 
-# Test coverage report
+# For generating test coverage report
 gem 'coveralls', require: false
