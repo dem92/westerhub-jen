@@ -1,4 +1,4 @@
-<h1>Your profile</h1>
+<h2>Profile: <%= @user.first_name + " " + @user.last_name %></h2>
 
 <div class="panel panel-info">
 
@@ -17,9 +17,16 @@
     <%= @user.about %>
   </div>
 
-
   <div class="panel-heading">
     <h3 class="panel-title">Skills</h3>
+  </div>
+  <div class="panel-body">
+    <%= @user.skills %>
+  </div>
+
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Areas of expertise</h3>
   </div>
   <div class="panel-body">
     <% @user.tags.each do |tag| %>
