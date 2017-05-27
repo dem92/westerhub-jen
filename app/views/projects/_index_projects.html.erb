@@ -1,24 +1,30 @@
 <% @projects.each do |project| %>
+
   <div class="row">
     <% if project.cover?%>
         <div class="col-sm-9 text-left">
     <% else %>
         <div class="col-sm-12 text-left">
     <% end %>
+
     <h2><%= project.title %></h2>
     <p>Publisher: <%= User.find(project.user_id).first_name %> <%= User.find(project.user_id).last_name %></p>
     <p><%= truncate(project.description, length: 200, separator: ' ') %></p>
+
     <% project.tags.each do |tag| %>
         <p class="department" id="department<%= tag.cssName %>"><%= tag.name %></p>
     <% end %>
+
     <br>
     <%= link_to 'Show', project, class:"btn btn-primary" %>
     </div>
+
     <% if project.cover?%>
         <div class="col-sm-3 project-row-img">
           <%= image_tag project.cover.thumb.url, :class => 'global-img-round-edges' %>
         </div>
     <% end %>
+
     </div>
     <hr>
   <% end %>
