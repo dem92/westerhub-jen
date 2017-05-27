@@ -165,13 +165,6 @@ ProjectTag.create!(
     tag_id: tag1.id
 )
 
-# Seeds for project_tag
-# UserTag.create!(
-#     project_id: project6.id,
-#     tag_id: tag1.id
-# )
-# TODO: Fix this
-
 # Seeds for comments
 Comment.create!(
     project_id: project5.id,
