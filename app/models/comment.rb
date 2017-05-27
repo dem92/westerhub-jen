@@ -2,8 +2,8 @@ class Comment < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
-  validates :name, length: {minimum: 2, maximum: 30}
-  validates :body, length: {minimum: 10, maximum: 500}
+  validates :name, :presence => true
+  validates :body, length: {minimum: 1, maximum: 500, :message => "Body must be between 1 and 500 characters."}
   validates :user, :presence => true
   validates :project, :presence => true
 end

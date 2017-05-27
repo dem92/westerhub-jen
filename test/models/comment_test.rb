@@ -10,14 +10,10 @@ class CommentTest < ActiveSupport::TestCase
    assert @comment.valid?
 
    # test variables
-   @shortName = "0"
-   assert @shortName.to_s.length<2
-   @longName = "0"*31
-   assert @longName.to_s.length>30
    @validName = @comment.name
-   assert @validName.to_s.length>3 && @validTitle.to_s.length<50
-   @shortBody = "0" * 9
-   assert @shortBody.to_s.length<10
+   assert_not @validName.nil?
+   @shortBody = ""
+   assert @shortBody.to_s.length<1
    @longBody = "0" * 501
    assert @longBody.to_s.length>500
    @validBody = @comment.body
@@ -51,7 +47,6 @@ class CommentTest < ActiveSupport::TestCase
   test "comment attributes validation_on_empty" do
     comment = Comment.new
     assert_not comment.valid?
-    # assert_equal comment.valid?, false
     assert comment.errors[:name].any?
     assert comment.errors[:body].any?
     assert comment.errors[:user].any?
@@ -67,26 +62,8 @@ class CommentTest < ActiveSupport::TestCase
     commentNoName = getValidComment
     commentNoName.name = nil
 
-    commentBlankName = getValidComment
-    commentBlankName.name = ""
-
-    commentShortName = getValidComment
-    commentShortName.name = @shortName
-
-    commentLongName = getValidComment
-    commentLongName.name = @longName
-
     assert_not commentNoName.valid?
     assert commentNoName.errors[:name].any?
-
-    assert_not commentBlankName.valid?
-    assert commentBlankName.errors[:name].any?
-
-    assert_not commentShortName.valid?
-    assert commentShortName.errors[:name].any?
-
-    assert_not commentLongName.valid?
-    assert commentLongName.errors[:name].any?
   end
 
  test "comment_body_validation" do
