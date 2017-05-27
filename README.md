@@ -56,6 +56,21 @@ The Companies page is not implemented, but would work the same way as the page f
 
 If the user tries to do something that requires a registered account they are redirected to the login page.
 
+##### Summary of functionality:
+* Users are redirected when attempting to access restricted functionality
+* Pagination feature
+* Image uploading feature
+* Implementation of Google Maps
+* Model validation
+
+A user can:
+* Log in/register
+* Publish/edit/delete own projects
+* Edit/delete own user profile
+* View all comments, publish/delete own comments on a project (with AJAX)
+* View, search and sort projects (with AJAX)
+* View and sort collaborators
+
 #### Individual contributions
 
 ##### Eva Dahlø (dem92)
